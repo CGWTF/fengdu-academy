@@ -1037,6 +1037,7 @@ body {
 .action-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
 
 .level-tip {
+  position: relative;
   display: inline-block;
   width: 18px; height: 18px;
   line-height: 18px;
@@ -1050,3 +1051,30 @@ body {
   vertical-align: middle;
   margin-left: 2px;
 }
+.level-tip-box {
+  display: none;
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  background: #2c2416;
+  color: #e0d5c5;
+  font-size: 0.8rem;
+  font-weight: normal;
+  line-height: 1.7;
+  padding: 10px 14px;
+  border-radius: 6px;
+  white-space: nowrap;
+  z-index: 200;
+}
+.level-tip-box em {
+  display: block;
+  font-style: normal;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding-bottom: 4px;
+}
+.level-tip:hover .level-tip-box { display: block; }
