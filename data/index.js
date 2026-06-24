@@ -95,7 +95,7 @@ window.STORY_DATA_ACCOUNTS = {
   'zhao-siqi': {
     id: 'zhao-siqi', username: 'zhao_sq', displayName: '赵思琪',
     role: 'student', level: 3,
-    passwordHash: 'a58149d355f02887dfbe55ebb2b64ba3',
+    passwordHash: '1c663f72f64e3ad05113de6a6b02b5b6',
     hintPageIds: ['student-zhao-siqi']
   },
   'zhong-prof': {
@@ -133,7 +133,7 @@ window.STORY_DATA_PEOPLE = {
 window.STORY_DATA_CLUES = {
   'chen-date': { id: 'chen-date', pageId: 'student-chen-yutong', label: '陈雨桐生日', reveals: '0715' },
   'lin-date': { id: 'lin-date', pageId: 'student-lin-mo', label: '林墨门禁', reveals: '0426' },
-  'zhao-date': { id: 'zhao-date', pageId: 'student-zhao-siqi', label: '赵思琪生日', reveals: '1208' },
+  'zhao-date': { id: 'zhao-date', pageId: 'student-zhao-siqi', label: '赵思琪密码提示', reveals: 'BBS+课件' },
   'zhong-date': { id: 'zhong-date', pageId: 'teacher-zhong-prof', label: '钟教授生日', reveals: '0311' },
   'lxj-year': { id: 'lxj-year', pageId: 'supply', label: '陆晓济年份', reveals: '1992' },
   'lxj-month': { id: 'lxj-month', pageId: 'notice', label: '陆晓济月份', reveals: '10' },
