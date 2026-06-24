@@ -1,37 +1,44 @@
 {
+  "chen-date": {
+    "id": "chen-date",
+    "pageId": "student-chen-yutong",
+    "label": "陈雨桐日期线索",
+    "content": "7/15 的退课申请和留言提醒指向她的生日密码。",
+    "reveals": "0715"
+  },
+  "lin-date": {
+    "id": "lin-date",
+    "pageId": "student-lin-mo",
+    "label": "林墨门禁线索",
+    "content": "门禁更新日期 04/26 可用于登录林墨账号。",
+    "reveals": "0426"
+  },
   "lxj-year": {
     "id": "lxj-year",
     "pageId": "supply",
-    "label": "陆晓济生日 — 年份",
-    "content": "供体转运清单显示，负责人陆晓济的入职编号为 LXJ-1992。",
+    "label": "陆晓济年份",
+    "content": "入职编号 LXJ-1992。",
     "reveals": "1992"
   },
   "lxj-month": {
     "id": "lxj-month",
-    "pageId": "course-03",
-    "label": "陆晓济生日 — 月份",
-    "content": "「灵体感知入门」课程介绍中提到：陆老师每年十月会暂停授课。",
+    "pageId": "notice",
+    "label": "陆晓济月份",
+    "content": "十月例行停课由陆老师审批。",
     "reveals": "10"
   },
   "lxj-day": {
     "id": "lxj-day",
     "pageId": "map",
-    "label": "陆晓济生日 — 日期",
-    "content": "地下设施地图标注：10月15日，B2层冷冻库封闭维护，仅限管理员陆晓济操作。",
+    "label": "陆晓济日期",
+    "content": "10月15日 B2 冷冻库封闭维护。",
     "reveals": "15"
   },
   "lxj-format": {
     "id": "lxj-format",
     "pageId": "archive",
-    "label": "陆晓济生日 — 拼合规则",
-    "content": "学生档案库的系统日志显示：管理员账号生日密码采用 YYYYMMDD 格式。",
+    "label": "教师密码格式",
+    "content": "教师临时密码采用 YYYYMMDD。",
     "reveals": "YYYYMMDD"
-  },
-  "tong-birthday": {
-    "id": "tong-birthday",
-    "pageId": "roster",
-    "label": "陈雨桐生日",
-    "content": "学生名单中陈雨桐条目显示生日为7月15日。",
-    "reveals": "0715"
   }
 }

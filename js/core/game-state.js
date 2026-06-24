@@ -1,7 +1,3 @@
-/**
- * 游戏状态管理器
- * localStorage key: arg_game_save
- */
 const GameState = {
   _state: null,
   _saveKey: 'game_save',
@@ -16,7 +12,8 @@ const GameState = {
       foundPages: {},
       searchHistory: [],
       cluesFound: [],
-      puzzlesSolved: [],
+      accountsUsed: ['player'],
+      blockedAttempts: [],
       flags: {},
       createdAt: null,
       lastSaved: null
@@ -27,10 +24,12 @@ const GameState = {
     const saved = Storage.get(this._saveKey);
     if (saved && saved.started) {
       this._state = { ...this._defaultState(), ...saved };
-      // 确保关键字段存在
-      if (!this._state.foundPages) this._state.foundPages = {};
-      if (!this._state.searchHistory) this._state.searchHistory = [];
-      if (!this._state.cluesFound) this._state.cluesFound = [];
+      this._state.foundPages = this._state.foundPages || {};
+      this._state.searchHistory = this._state.searchHistory || [];
+      this._state.cluesFound = this._state.cluesFound || [];
+      this._state.accountsUsed = this._state.accountsUsed || ['player'];
+      this._state.blockedAttempts = this._state.blockedAttempts || [];
+      this._state.flags = this._state.flags || {};
     } else {
       this._state = this._defaultState();
       this._state.createdAt = new Date().toISOString();
@@ -40,6 +39,7 @@ const GameState = {
   },
 
   save() {
+    if (!this._state) this.init();
     this._state.lastSaved = new Date().toISOString();
     Storage.set(this._saveKey, this._state);
   },
@@ -51,23 +51,30 @@ const GameState = {
     this.save();
   },
 
-  // 账号
   setPlayer(name, birthday) {
     this._state.playerName = name;
     this._state.playerBirthday = birthday;
     this._state.currentAccount = 'player';
     this._state.level = 0;
+    this.markAccountUsed('player');
     this.save();
   },
 
   switchAccount(accountId, level) {
     this._state.currentAccount = accountId;
     this._state.level = level;
+    this.markAccountUsed(accountId);
     this.save();
   },
 
-  // 页面发现
+  markAccountUsed(accountId) {
+    if (!this._state.accountsUsed.includes(accountId)) {
+      this._state.accountsUsed.push(accountId);
+    }
+  },
+
   foundPage(pageId) {
+    if (!pageId) return false;
     if (!this._state.foundPages[pageId]) {
       this._state.foundPages[pageId] = new Date().toISOString();
       this.save();
@@ -80,15 +87,24 @@ const GameState = {
     return !!this._state.foundPages[pageId];
   },
 
-  // 搜索记录
-  logSearch(keyword, result) {
-    const entry = { keyword, timestamp: new Date().toISOString(), result };
-    this._state.searchHistory.push(entry);
+  logSearch(entry) {
+    const normalized = typeof SearchEngine !== 'undefined'
+      ? SearchEngine.normalize(entry.keyword || '')
+      : (entry.keyword || '').trim();
+    const record = {
+      keyword: entry.keyword || '',
+      normalized,
+      timestamp: new Date().toISOString(),
+      resultType: entry.resultType || 'none',
+      resultPageId: entry.resultPageId || null,
+      requiredLevel: entry.requiredLevel || 0
+    };
+    this._state.searchHistory.push(record);
+    if (record.resultType === 'blocked') this._state.blockedAttempts.push(record);
     this.save();
-    return entry;
+    return record;
   },
 
-  // 线索
   findClue(clueId) {
     if (!this._state.cluesFound.includes(clueId)) {
       this._state.cluesFound.push(clueId);
@@ -98,8 +114,7 @@ const GameState = {
     return false;
   },
 
-  // 标记
-  setFlag(key, value) {
+  setFlag(key, value = true) {
     this._state.flags[key] = value;
     this.save();
   },
@@ -108,29 +123,29 @@ const GameState = {
     return this._state.flags[key];
   },
 
-  // 进度
-  getFoundCount() {
-    return Object.keys(this._state.foundPages).length;
+  getState() {
+    if (!this._state) this.init();
+    return this._state;
   },
 
   getTotalPages() {
-    // 从 pages.json 统计（由 story-data 注入）
-    return window._totalPageCount || 15;
+    if (typeof StoryData !== 'undefined' && StoryData._loaded) {
+      return StoryData.getTotalPageCount();
+    }
+    return 0;
   },
 
   getSummary() {
     return {
       account: this._state.currentAccount,
       level: this._state.level,
-      foundPages: Object.keys(this._state.foundPages),
       foundCount: Object.keys(this._state.foundPages).length,
       totalPages: this.getTotalPages(),
       searches: this._state.searchHistory.length,
-      clues: this._state.cluesFound
+      clues: this._state.cluesFound.length
     };
   },
 
-  // 导出导入
   export() {
     return JSON.stringify(this._state, null, 2);
   },
@@ -138,18 +153,15 @@ const GameState = {
   import(json) {
     try {
       const data = JSON.parse(json);
-      if (!data || typeof data !== 'object') throw new Error('Invalid save');
-      if (!data.hasOwnProperty('started')) throw new Error('Missing required field');
+      if (!data || typeof data !== 'object' || !data.started) {
+        throw new Error('Invalid save');
+      }
       this._state = { ...this._defaultState(), ...data };
       this.save();
       return true;
     } catch (e) {
-      console.error('导入存档失败:', e);
+      console.error('Save import failed:', e);
       return false;
     }
-  },
-
-  getState() {
-    return this._state;
   }
 };

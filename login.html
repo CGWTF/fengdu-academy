@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>账号登录 - 酆都在线学院</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body data-page-id="login" data-required-level="0" data-is-hidden="false">
+  <div id="app-header"></div>
+  <main class="main-content">
+    <section class="card login-panel">
+      <h2>已有账号登录</h2>
+      <p class="muted">输入你从人物主页、档案或教师通知中找到的账号。生日只是部分账号的临时密码形式。</p>
+      <div class="form-group">
+        <label for="username">账号名 / 学号</label>
+        <input id="username" autocomplete="off" placeholder="例如 chen-yutong">
+      </div>
+      <div class="form-group">
+        <label for="password">密码</label>
+        <input id="password" autocomplete="off" placeholder="MMDD 或 YYYYMMDD">
+      </div>
+      <button class="btn-primary" id="loginBtn">登录</button>
+      <p id="loginMsg" class="modal-hint"></p>
+    </section>
+  </main>
+  <div id="app-footer"></div>
+  <script src="js/utils/storage.js"></script>
+  <script src="data/index.js"></script>
+  <script src="js/core/game-state.js"></script>
+  <script src="js/core/story-data.js"></script>
+  <script src="js/core/search-engine.js"></script>
+  <script src="js/core/account-manager.js"></script>
+  <script src="js/core/router.js"></script>
+  <script src="js/components/layout.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Layout.init('账号登录');
+      const params = new URLSearchParams(location.search);
+      if (params.get('reason') === 'level') {
+        const msg = document.getElementById('loginMsg');
+        msg.textContent = '该页面需要更高权限。请切换到已发现的账号。';
+        msg.className = 'modal-hint error';
+      }
+    });
+    document.getElementById('loginBtn').addEventListener('click', async () => {
+      const msg = document.getElementById('loginMsg');
+      const result = await AccountManager.login(
+        document.getElementById('username').value,
+        document.getElementById('password').value
+      );
+      if (!result.ok) {
+        msg.textContent = result.reason;
+        msg.className = 'modal-hint error';
+        return;
+      }
+      msg.textContent = `已登录 ${result.account.displayName}，权限 Lv${result.account.level}`;
+      msg.className = 'modal-hint success';
+      setTimeout(() => { window.location.href = 'home.html'; }, 700);
+    });
+  </script>
+</body>
+</html>

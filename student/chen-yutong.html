@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>陈雨桐</title><link rel="stylesheet" href="../css/reset.css"><link rel="stylesheet" href="../css/common.css"></head>
+<body data-page-id="student-chen-yutong" data-required-level="0" data-is-hidden="false" data-person-id="chen-yutong">
+  <div id="app-header"></div>
+  <main class="main-content">
+    <section class="card">
+      <h2>陈雨桐</h2>
+      <div class="profile-meta">
+        <div>状态：<span class="status-pill">已结业</span></div>
+        <div>课程：灵体感知 / 记忆转移</div>
+        <div>最近公开登录：7/15 23:41</div>
+      </div>
+      <p>她的主页很少更新。留言区里有人提醒她：“7/15 那天别忘了把课表截图发我。”同一天深夜，她提交过一次退课申请，状态显示为驳回。</p>
+      <div class="record-card">站内消息：你的纪念日提醒已关闭。若需恢复，请使用本人账号重新登录。</div>
+      <div id="private"></div>
+    </section>
+  </main>
+  <div id="app-footer"></div>
+  <script src="../js/utils/storage.js"></script><script src="../data/index.js"></script><script src="../js/core/game-state.js"></script><script src="../js/core/story-data.js"></script><script src="../js/core/search-engine.js"></script><script src="../js/core/account-manager.js"></script><script src="../js/core/router.js"></script><script src="../js/components/layout.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{Layout.init('学生个人主页','陈雨桐');GameState.foundPage('student-chen-yutong');if(GameState.getState().level>=1){document.getElementById('private').innerHTML='<div class="record-card">完整档案：结业并非毕业。转运编号 TR-2024-0315。档案建议搜索“供体筛选”。</div>';}});</script>
+</body>
+</html>

@@ -1,20 +1,19 @@
-/**
- * 故事数据加载器
- * 从 data/index.js 内联数据中加载，避免 file:// 下 fetch CORS 问题
- * 数据在页面中通过 <script src="data/index.js"> 预先加载
- */
 const StoryData = {
   _loaded: false,
+  pages: {},
+  courses: {},
+  accounts: {},
+  people: {},
+  clues: {},
+  searchIndex: { entries: [] },
 
   load() {
-    if (typeof STORY_DATA_PAGES === 'undefined') {
-      console.error('数据未加载：请确保 data/index.js 在 story-data.js 之前引入');
-      return false;
-    }
-    this.pages = STORY_DATA_PAGES;
-    this.courses = STORY_DATA_COURSES || {};
-    this.accounts = STORY_DATA_ACCOUNTS || {};
-    this.clues = STORY_DATA_CLUES || {};
+    this.pages = window.STORY_DATA_PAGES || {};
+    this.courses = window.STORY_DATA_COURSES || {};
+    this.accounts = window.STORY_DATA_ACCOUNTS || {};
+    this.people = window.STORY_DATA_PEOPLE || {};
+    this.clues = window.STORY_DATA_CLUES || {};
+    this.searchIndex = window.STORY_DATA_SEARCH_INDEX || { entries: [] };
     this._loaded = true;
     return true;
   },
@@ -22,14 +21,15 @@ const StoryData = {
   getPage(id) { return this.pages[id] || null; },
   getCourse(id) { return this.courses[id] || null; },
   getAccount(id) { return this.accounts[id] || null; },
+  getPerson(id) { return this.people[id] || null; },
   getClue(id) { return this.clues[id] || null; },
 
   getCourseList() {
     return Object.values(this.courses).sort((a, b) => a.id.localeCompare(b.id));
   },
 
-  getAccountList() {
-    return Object.values(this.accounts);
+  getPeopleByType(type) {
+    return Object.values(this.people).filter(p => p.type === type);
   },
 
   getCluesForPage(pageId) {

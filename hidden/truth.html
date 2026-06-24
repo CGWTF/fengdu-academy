@@ -1,185 +1,33 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>工作日志 — 陆晓济</title>
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/common.css">
-</head>
-<body data-page-id="truth" data-required-level="2" data-is-hidden="true">
-
-    <div id="app-header"></div>
-
-    <main class="main-content">
-        <div class="card" style="border-left:4px solid var(--danger);">
-            <h2>📋 陆晓济的工作日志</h2>
-            <div class="stamp" style="margin-bottom:16px;">Lv2 最高机密 · 仅限管理员</div>
-
-            <div class="exp-log">
-<span class="timestamp">[2025-01-03 01:42]</span> 日志所有者：陆晓济（管理员）
-<span class="timestamp">[2025-01-03 01:42]</span> 权限等级：Lv2
-<span class="timestamp">[2025-01-03 01:42]</span> 系统版本：v3.7.1
-<span class="timestamp">[2025-01-03 01:43]</span> === 本学期工作摘要 ===
-<span class="timestamp">[2025-01-03 01:43]</span>
-<span class="timestamp">[2025-01-03 01:43]</span> 1. 新生招生工作已完成。
-<span class="timestamp">[2025-01-03 01:43]</span>    渠道：短视频广告定向投放。
-<span class="timestamp">[2025-01-03 01:43]</span>    目标人群：点击广告并完成10秒观看的用户。
-<span class="timestamp">[2025-01-03 01:43]</span>    入学机制：关闭按钮反向确认为入学同意。
-<span class="timestamp warning">[2025-01-03 01:43]</span>    用户并不知情。
-<span class="timestamp">[2025-01-03 01:44]</span>
-<span class="timestamp">[2025-01-03 01:44]</span> 2. 供体筛选进度：
-<span class="timestamp">[2025-01-03 01:44]</span>    A级供体：陈雨桐（已转运）、周远（已转运）、林墨（待转运）
-<span class="timestamp">[2025-01-03 01:44]</span>    B级供体：王建国（已转运）、吴小曼（治疗观察中）
-<span class="timestamp">[2025-01-03 01:45]</span>    待评估：赵思琪（多次申请退课，已驳回）
-<span class="timestamp warning">[2025-01-03 01:45]</span>    新入学者：<span id="truth-player-name">[待读取]</span>（评估尚未开始）
-<span class="timestamp">[2025-01-03 01:46]</span>
-<span class="timestamp">[2025-01-03 01:46]</span> 3. 实验事故回顾：
-<span class="timestamp">[2025-01-03 01:46]</span>    2024年10月29日灵体训练事故导致1人死亡、2人观察中。
-<span class="timestamp">[2025-01-03 01:46]</span>    事故发生于本人十月停课期间。
-<span class="timestamp">[2025-01-03 01:47]</span>    已更新安全守则：每次濒死训练不超过2人。
-<span class="timestamp">[2025-01-03 01:48]</span>
-<span class="timestamp">[2025-01-03 01:48]</span> 4. 关于本系统：
-<span class="timestamp">[2025-01-03 01:48]</span>    酆都在线学院是一个伪装成在线教育平台的人体实验招募系统。
-<span class="timestamp">[2025-01-03 01:48]</span>    学院本身不存在实体校区——所有标注地址均为临时实验场所。
-<span class="timestamp warning">[2025-01-03 01:49]</span>    本系统的真正名称是「供体筛选与转运管理系统」。
-<span class="timestamp warning">[2025-01-03 01:49]</span>    陆晓济不是人名。它是系统代号——
-<span class="timestamp warning">[2025-01-03 01:49]</span>    陆 = 陆续（Ongoing）
-<span class="timestamp warning">[2025-01-03 01:49]</span>    晓 = 知晓（Awareness）
-<span class="timestamp warning">[2025-01-03 01:49]</span>    济 = 救济（Salvation）
-<span class="timestamp warning">[2025-01-03 01:50]</span>    「陆续知晓的救济」——一个持续运行的自动化招募与筛选系统。
-<span class="timestamp">[2025-01-03 01:50]</span>    自2019年上线以来，已成功转运超过40名供体。
-            </div>
-
-            <!-- 最终反转区域 -->
-            <div class="card" id="final-reveal" style="border:2px solid var(--danger);margin-top:20px;">
-                <h2 style="color:var(--danger);">⚠️ 当前访问者信息</h2>
-                <p style="text-indent:0;color:var(--text-light);font-size:0.85rem;margin-bottom:16px;">
-                    以下信息由系统自动采集。你没有被入侵。你是一步步把自己交给了系统。
-                </p>
-
-                <div class="record-card" style="border-left-color:var(--danger);">
-                    <table style="width:100%;font-size:0.9rem;">
-                        <tr><td style="padding:4px 8px;color:var(--text-light);"> 昵称</td><td style="padding:4px 8px;"><strong id="reveal-name">—</strong></td></tr>
-                        <tr><td style="padding:4px 8px;color:var(--text-light);"> 生日密码</td><td style="padding:4px 8px;"><strong id="reveal-birthday">—</strong></td></tr>
-                        <tr><td style="padding:4px 8px;color:var(--text-light);"> 操作系统/浏览器</td><td style="padding:4px 8px;" id="reveal-ua">—</td></tr>
-                        <tr><td style="padding:4px 8px;color:var(--text-light);"> 屏幕分辨率</td><td style="padding:4px 8px;" id="reveal-screen">—</td></tr>
-                        <tr><td style="padding:4px 8px;color:var(--text-light);"> 语言</td><td style="padding:4px 8px;" id="reveal-lang">—</td></tr>
-                        <tr><td style="padding:4px 8px;color:var(--text-light);"> 时区</td><td style="padding:4px 8px;" id="reveal-tz">—</td></tr>
-                    </table>
-                </div>
-
-                <div class="record-card" style="border-left-color:var(--accent);margin-top:12px;">
-                    <p style="text-indent:0;"><strong>🔍 搜索记录：</strong></p>
-                    <div id="reveal-searches" style="font-size:0.85rem;color:var(--text-light);max-height:120px;overflow-y:auto;">
-                        加载中…
-                    </div>
-                </div>
-
-                <div style="text-align:center;margin-top:20px;padding:20px;background:#fdfcf9;border-radius:8px;">
-                    <p style="font-size:1.2rem;color:var(--danger);font-weight:bold;text-indent:0;">
-                        ⚠️ 你已被标记
-                    </p>
-                    <p style="text-indent:0;color:var(--text-light);margin-top:4px;">
-                        你的供体评估编号已生成。
-                    </p>
-                    <p style="text-indent:0;color:var(--text-light);">
-                        评估编号：<strong id="reveal-code" style="color:var(--danger);">—</strong>
-                    </p>
-                    <p style="text-indent:0;color:var(--text-light);margin-top:8px;font-size:0.85rem;">
-                        酆都在线学院感谢你的参与。<br>
-                        你没有被服务器识别。<br>
-                        你只是一步步把自己交给了系统。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <div id="app-footer"></div>
-
-    <script src="../js/utils/storage.js"></script>
-    <script src="../js/utils/dom.js"></script>
-    <script src="../data/index.js"></script>
-    <script src="../js/core/game-state.js"></script>
-    <script src="../js/core/story-data.js"></script>
-    <script src="../js/core/search-engine.js"></script>
-    <script src="../js/core/router.js"></script>
-    <script src="../js/components/layout.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        GameState.init();
-        StoryData.load();
-        SearchEngine.init(STORY_DATA_PAGES);
-        window._totalPageCount = StoryData.getTotalPageCount();
-        Router.init();
-
-        Layout.renderHeader('陆晓济的工作日志', '最高机密');
-        Layout.renderFooter('15', window._totalPageCount);
-
-        // 填充反转信息
-        var state = GameState.getState();
-
-        // 昵称和生日（玩家主动输入）
-        document.getElementById('truth-player-name').textContent = state.playerName || '[未读取]';
-        document.getElementById('reveal-name').textContent = state.playerName || '—';
-        document.getElementById('reveal-birthday').textContent = state.playerBirthday || '—';
-
-        // 设备信息
-        var ua = navigator.userAgent;
-        var os = '未知';
-        if (ua.indexOf('Windows') > -1) os = 'Windows';
-        else if (ua.indexOf('Mac') > -1) os = 'macOS';
-        else if (ua.indexOf('Linux') > -1) os = 'Linux';
-        else if (ua.indexOf('Android') > -1) os = 'Android';
-        else if (ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1) os = 'iOS';
-
-        var browser = '未知';
-        if (ua.indexOf('Chrome') > -1) browser = 'Chrome';
-        else if (ua.indexOf('Firefox') > -1) browser = 'Firefox';
-        else if (ua.indexOf('Safari') > -1 && ua.indexOf('Chrome') === -1) browser = 'Safari';
-        else if (ua.indexOf('Edge') > -1) browser = 'Edge';
-
-        document.getElementById('reveal-ua').textContent = os + ' / ' + browser;
-        document.getElementById('reveal-screen').textContent =
-            screen.width + ' × ' + screen.height;
-        document.getElementById('reveal-lang').textContent = navigator.language || '—';
-
-        try {
-            document.getElementById('reveal-tz').textContent =
-                Intl.DateTimeFormat().resolvedOptions().timeZone || '—';
-        } catch(e) {
-            document.getElementById('reveal-tz').textContent = '—';
-        }
-
-        // 搜索记录
-        var searches = state.searchHistory || [];
-        var searchHtml = '';
-        if (searches.length === 0) {
-            searchHtml = '<span style="color:var(--text-light);">无搜索记录</span>';
-        } else {
-            var recent = searches.slice(-10);
-            recent.forEach(function(s) {
-                var icon = s.result === 'none' ? '❌' :
-                           s.result === 'blocked' ? '🔒' : '✅';
-                searchHtml += '<div style="margin-bottom:2px;">' +
-                    icon + ' 「' + escapeHtml(s.keyword) + '」 ' +
-                    '<span style="font-size:0.75rem;color:#888;">' +
-                    new Date(s.timestamp).toLocaleString('zh-CN') + '</span></div>';
-            });
-        }
-        document.getElementById('reveal-searches').innerHTML = searchHtml;
-
-        // 生成评估编号
-        document.getElementById('reveal-code').textContent =
-            'EVAL-2025-' + Math.floor(Math.random() * 9000 + 1000);
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>最终真相</title><link rel="stylesheet" href="../css/reset.css"><link rel="stylesheet" href="../css/common.css"></head>
+<body data-page-id="truth" data-required-level="5" data-is-hidden="true">
+  <div id="app-header"></div>
+  <main class="main-content">
+    <section class="card">
+      <h2>你已被标记</h2>
+      <p>你以为自己在调查陈雨桐。系统记录显示，你的搜索、登录路径和停留页面已经足够完成倾向判定。</p>
+      <div class="record-card" id="profile"></div>
+      <h3>搜索记录</h3>
+      <div id="truth-history"></div>
+    </section>
+  </main>
+  <div id="app-footer"></div>
+  <script src="../js/utils/storage.js"></script><script src="../data/index.js"></script><script src="../js/core/game-state.js"></script><script src="../js/core/story-data.js"></script><script src="../js/core/search-engine.js"></script><script src="../js/core/account-manager.js"></script><script src="../js/core/router.js"></script><script src="../js/components/layout.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=> {
+      Layout.init('最终真相','LvX');
+      const s = GameState.getState();
+      document.getElementById('profile').innerHTML = `
+        昵称：${Layout.escape(s.playerName || '未登记')}<br>
+        自设生日密码：${Layout.escape(s.playerBirthday || '未登记')}<br>
+        账号路径：${s.accountsUsed.map(a => Layout.escape(a)).join(' -> ')}<br>
+        浏览器：${Layout.escape(navigator.userAgent)}<br>
+        屏幕：${screen.width} x ${screen.height}<br>
+        语言/时区：${navigator.language} / ${Intl.DateTimeFormat().resolvedOptions().timeZone}
+      `;
+      Layout.renderSearchHistory('truth-history');
     });
-
-    function escapeHtml(str) {
-        var div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
-    }
-    </script>
+  </script>
 </body>
 </html>

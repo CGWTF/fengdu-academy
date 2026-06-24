@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>林墨</title><link rel="stylesheet" href="../css/reset.css"><link rel="stylesheet" href="../css/common.css"></head>
+<body data-page-id="student-lin-mo" data-required-level="0" data-is-hidden="false" data-person-id="lin-mo">
+  <div id="app-header"></div>
+  <main class="main-content">
+    <section class="card">
+      <h2>林墨</h2>
+      <div class="profile-meta">
+        <div>状态：<span class="status-pill">实验中</span></div>
+        <div>课程：禁忌药理学</div>
+        <div>最近留言：04/26 门禁更新</div>
+      </div>
+      <p>林墨的公开主页没有联系方式。Lv1 档案视图里出现一条留言：“04/26 后旧门禁还能用，助教账号别删。”</p>
+      <div id="private"></div>
+    </section>
+  </main>
+  <div id="app-footer"></div>
+  <script src="../js/utils/storage.js"></script><script src="../data/index.js"></script><script src="../js/core/game-state.js"></script><script src="../js/core/story-data.js"></script><script src="../js/core/search-engine.js"></script><script src="../js/core/account-manager.js"></script><script src="../js/core/router.js"></script><script src="../js/components/layout.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{Layout.init('学生个人主页','林墨');if(GameState.getState().level>=1){document.getElementById('private').innerHTML='<div class="record-card">助教账号仍可登录。账号名 lin-mo，门禁更新日期可能仍被当作临时密码。</div>';}});</script>
+</body>
+</html>

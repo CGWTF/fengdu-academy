@@ -1,177 +1,83 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学生系统主页 — 酆都在线学院</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/common.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新生主页 - 酆都在线学院</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/common.css">
 </head>
 <body data-page-id="home" data-required-level="0" data-is-hidden="false">
-
-    <div id="app-header"></div>
-
-    <main class="main-content">
-        <!-- 未注册时显示注册表单 -->
-        <div class="card" id="registration-card">
-            <h2>📝 新生入学登记</h2>
-            <p style="text-indent:0;color:var(--text-light);margin-bottom:20px;">
-                欢迎来到酆都在线学院。请填写以下信息完成入学注册。
-            </p>
-
-            <div class="registration-form">
-                <div class="form-group">
-                    <label>昵称</label>
-                    <input type="text" id="reg-nickname"
-                           placeholder="请输入你的昵称…"
-                           maxlength="12"
-                           autocomplete="off">
-                    <div class="form-hint">你可以自由选择任何昵称。</div>
-                </div>
-                <div class="form-group">
-                    <label>生日</label>
-                    <input type="text" id="reg-birthday"
-                           placeholder="例如：0715 或 19921015"
-                           maxlength="10"
-                           autocomplete="off">
-                    <div class="form-hint">格式：MMDD 或 YYYYMMDD。这将作为你的账号密码，请牢记。</div>
-                </div>
-                <div class="form-group">
-                    <button class="btn-primary" onclick="doRegister()" style="width:100%;">
-                        确认入学
-                    </button>
-                </div>
-                <p id="reg-msg" style="text-align:center;min-height:20px;font-size:0.85rem;color:var(--danger);"></p>
-            </div>
+  <div id="app-header"></div>
+  <main class="main-content">
+    <section class="card" id="register-card">
+      <h2>新生入学认证</h2>
+      <p class="muted">系统显示你已经被预录取。完成认证后，你可以查看课程、学生名单和退学流程。</p>
+      <div class="login-panel">
+        <div class="form-group">
+          <label for="playerName">昵称</label>
+          <input id="playerName" maxlength="12" autocomplete="off">
         </div>
-
-        <!-- 已注册时显示的仪表盘 -->
-        <div class="card" id="dashboard-card" style="display:none;">
-            <h2>📋 学生仪表盘</h2>
-            <p style="text-indent:0;color:var(--success);margin-bottom:16px;">
-                ✅ 欢迎回来，<strong id="dash-name">—</strong>。你已成功入学。
-            </p>
-
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
-                <div class="card" style="padding:16px;text-align:center;cursor:pointer;"
-                     onclick="window.location.href='courses.html'">
-                    <div style="font-size:2rem;">📚</div>
-                    <div style="font-weight:bold;">选课中心</div>
-                    <div style="font-size:0.8rem;color:var(--text-light);">浏览课程列表</div>
-                </div>
-                <div class="card" style="padding:16px;text-align:center;cursor:pointer;"
-                     onclick="window.location.href='roster.html'">
-                    <div style="font-size:2rem;">👥</div>
-                    <div style="font-weight:bold;">学生名单</div>
-                    <div style="font-size:0.8rem;color:var(--text-light);">查看同学档案</div>
-                </div>
-            </div>
-
-            <div class="record-card">
-                <div><strong>学籍号：</strong>STU-2025-<span id="dash-id">—</span></div>
-                <div><strong>入学日期：</strong><span id="dash-date">—</span></div>
-                <div><strong>已选课程：</strong><span id="dash-courses">0</span> 门</div>
-                <div><strong>档案状态：</strong><span class="status-active">在读</span></div>
-            </div>
-
-            <p style="text-indent:0;color:var(--text-light);font-size:0.85rem;margin-top:12px;">
-                💡 提示：你可以通过页面顶部的搜索框查找课程相关的档案信息。如果发现什么异常的关键词，试试搜索它。
-            </p>
+        <div class="form-group">
+          <label for="playerBirthday">自设生日密码</label>
+          <input id="playerBirthday" maxlength="8" autocomplete="off" placeholder="MMDD 或 YYYYMMDD">
+          <p class="muted">这是你的新生账号密码。系统说它只用于身份确认。</p>
         </div>
-    </main>
+        <button class="btn-primary" id="registerBtn">确认入学</button>
+        <p id="registerMsg" class="modal-hint"></p>
+      </div>
+    </section>
 
-    <div id="app-footer"></div>
+    <section class="card" id="dashboard-card" style="display:none;">
+      <h2>当前目标：找到退学入口</h2>
+      <p class="muted">欢迎回来，<span id="dashName"></span>。主页的退学按钮始终显示维护中，你需要从课程、学生名单和搜索记录里弄清自己为什么被录取。</p>
+      <div class="action-grid">
+        <a class="action-card" href="courses.html"><strong>课程中心</strong><br><span class="muted">查看异常课程描述</span></a>
+        <a class="action-card" href="students.html"><strong>学生名单</strong><br><span class="muted">从人物主页调查陈雨桐</span></a>
+        <a class="action-card" href="search.html?q=退学"><strong>退学入口</strong><br><span class="muted">系统会记录你的尝试</span></a>
+        <a class="action-card" href="login.html"><strong>已有账号登录</strong><br><span class="muted">切换到你找到的账号</span></a>
+      </div>
+    </section>
 
-    <script src="js/utils/storage.js"></script>
-    <script src="js/utils/dom.js"></script>
-    <script src="data/index.js"></script>
-    <script src="js/core/game-state.js"></script>
-    <script src="js/core/story-data.js"></script>
-    <script src="js/core/search-engine.js"></script>
-    <script src="js/core/router.js"></script>
-    <script src="js/components/layout.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // 检查是否通过广告入口进入，防止直接访问跳过广告陷阱
-        if (!sessionStorage.getItem('ad_passed')) {
-            window.location.href = 'index.html';
-            return;
-        }
-
-        GameState.init();
-        StoryData.load();
-        SearchEngine.init(STORY_DATA_PAGES);
-        window._totalPageCount = StoryData.getTotalPageCount();
-        Router.init();
-
-        const state = GameState.getState();
-
-        // 如果已经注册过，直接显示仪表盘
-        if (state.playerName && state.playerBirthday) {
-            showDashboard();
-        }
-
-        // 检查 URL 参数
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('error') === 'permission') {
-            alert('⚠️ 你当前的账号权限不足，无法访问该页面。\n\n请尝试通过「账号切换」登录更高权限的账号。');
-        }
-
-        Layout.renderHeader('学生系统主页');
-        Layout.renderFooter('00', window._totalPageCount || 15);
+    <section class="card">
+      <h2>搜索记录</h2>
+      <div id="home-history"></div>
+    </section>
+  </main>
+  <div id="app-footer"></div>
+  <script src="js/utils/storage.js"></script>
+  <script src="data/index.js"></script>
+  <script src="js/core/game-state.js"></script>
+  <script src="js/core/story-data.js"></script>
+  <script src="js/core/search-engine.js"></script>
+  <script src="js/core/account-manager.js"></script>
+  <script src="js/core/router.js"></script>
+  <script src="js/components/layout.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Layout.init('新生主页');
+      const state = GameState.getState();
+      const registerCard = document.getElementById('register-card');
+      const dashboardCard = document.getElementById('dashboard-card');
+      if (state.playerName) {
+        registerCard.style.display = 'none';
+        dashboardCard.style.display = 'block';
+        document.getElementById('dashName').textContent = state.playerName;
+      }
+      Layout.renderSearchHistory('home-history');
     });
-
-    function doRegister() {
-        const name = document.getElementById('reg-nickname').value.trim();
-        const birthday = document.getElementById('reg-birthday').value.trim();
-        const msg = document.getElementById('reg-msg');
-
-        if (!name || name.length < 1 || name.length > 12) {
-            msg.textContent = '请输入昵称（1-12个字符）';
-            return;
-        }
-
-        if (!birthday) {
-            msg.textContent = '请输入生日（MMDD 或 YYYYMMDD 格式）';
-            return;
-        }
-
-        // 校验格式
-        if (!/^\d{4,8}$/.test(birthday)) {
-            msg.textContent = '生日格式不正确，请输入 MMDD 或 YYYYMMDD 格式的数字';
-            return;
-        }
-
-        if (birthday.length !== 4 && birthday.length !== 8) {
-            msg.textContent = '请输入4位（MMDD）或8位（YYYYMMDD）生日';
-            return;
-        }
-
-        // 保存
-        GameState.setPlayer(name, birthday);
-        msg.style.color = 'var(--success)';
-        msg.textContent = '✅ 注册成功！正在进入系统…';
-
-        setTimeout(function() {
-            showDashboard();
-        }, 600);
-    }
-
-    function showDashboard() {
-        const state = GameState.getState();
-        document.getElementById('registration-card').style.display = 'none';
-        document.getElementById('dashboard-card').style.display = 'block';
-
-        document.getElementById('dash-name').textContent = state.playerName;
-        document.getElementById('dash-id').textContent =
-            'STU-' + new Date().getFullYear() + '-' +
-            Math.floor(Math.random() * 9000 + 1000);
-        document.getElementById('dash-date').textContent =
-            new Date().toLocaleDateString('zh-CN');
-        document.getElementById('dash-courses').textContent = '6';
-
-        Layout.renderHeader('学生系统主页');
-    }
-    </script>
+    document.getElementById('registerBtn').addEventListener('click', () => {
+      const name = document.getElementById('playerName').value.trim();
+      const birthday = document.getElementById('playerBirthday').value.trim();
+      const msg = document.getElementById('registerMsg');
+      if (!name || !/^\d{4}$|^\d{8}$/.test(birthday)) {
+        msg.textContent = '请填写昵称，并输入 4 位或 8 位生日密码。';
+        msg.className = 'modal-hint error';
+        return;
+      }
+      GameState.setPlayer(name, birthday);
+      window.location.reload();
+    });
+  </script>
 </body>
 </html>

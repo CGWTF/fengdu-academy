@@ -1,148 +1,21 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>管理后台 — 酆都在线学院</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/common.css">
-</head>
-<body data-page-id="admin" data-required-level="2" data-is-hidden="false">
-
-    <div id="app-header"></div>
-
-    <main class="main-content">
-        <!-- Lv0-Lv1 看到权限不足 -->
-        <div class="card permission-denied" id="admin-denied">
-            <div class="icon">🔒</div>
-            <h3>管理后台 — 权限不足</h3>
-            <p>此页面需要 <strong>Lv2（管理员）</strong> 权限。</p>
-            <p style="color:var(--text-light);font-size:0.9rem;">
-                你当前的权限等级为 Lv<span id="current-level-display">0</span>。
-                请通过账号切换登录管理员账号。
-            </p>
-            <p style="margin-top:12px;">
-                <button class="btn-primary" onclick="Layout.showAccountModal()">
-                    🔐 切换账号
-                </button>
-            </p>
-        </div>
-
-        <!-- Lv2 看到管理面板 -->
-        <div class="card" id="admin-panel" style="display:none;">
-            <h2>⚙️ 管理后台</h2>
-            <p style="color:var(--success);text-indent:0;margin-bottom:16px;">
-                ✅ 已以管理员身份登录：<strong>陆晓济</strong>（Lv2）
-            </p>
-
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
-                <div class="record-card" style="border-left-color:var(--danger);">
-                    <strong>🚨 活跃供体</strong><br>
-                    <span style="font-size:1.5rem;">3</span> 名待转运
-                </div>
-                <div class="record-card" style="border-left-color:var(--accent);">
-                    <strong>📊 累计转运</strong><br>
-                    <span style="font-size:1.5rem;">40+</span> 名供体
-                </div>
-                <div class="record-card" style="border-left-color:#e67e22;">
-                    <strong>🔬 进行中实验</strong><br>
-                    <span style="font-size:1.5rem;">6</span> 个项目
-                </div>
-                <div class="record-card" style="border-left-color:var(--success);">
-                    <strong>📋 新入学（待评估）</strong><br>
-                    <span style="font-size:1.5rem;">2</span> 名新生
-                </div>
-            </div>
-
-            <h3>快捷操作</h3>
-            <table class="data-table">
-                <thead>
-                    <tr><th>功能</th><th>访问</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>📋 工作日志（完整真相）</td>
-                        <td>
-                            <span style="color:var(--text-light);">搜索「宿主替换」或</span>
-                            <a href="hidden/truth.html" style="color:var(--accent);text-decoration:underline;">
-                                直接访问 →
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🗺️ 地下设施地图</td>
-                        <td><a href="hidden/map.html" style="color:var(--accent);text-decoration:underline;">查看 →</a></td>
-                    </tr>
-                    <tr>
-                        <td>📦 供体转运清单</td>
-                        <td><a href="hidden/supply.html" style="color:var(--accent);text-decoration:underline;">查看 →</a></td>
-                    </tr>
-                    <tr>
-                        <td>🗄️ 学生档案库</td>
-                        <td><a href="hidden/archive.html" style="color:var(--accent);text-decoration:underline;">查看 →</a></td>
-                    </tr>
-                    <tr>
-                        <td>🧪 实验记录查看</td>
-                        <td><a href="hidden/exp-001.html" style="color:var(--accent);text-decoration:underline;">#001</a> |
-                            <a href="hidden/exp-002.html" style="color:var(--accent);text-decoration:underline;">事故报告</a></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="record-card" style="border-left-color:var(--danger);margin-top:16px;">
-                <p style="text-indent:0;"><strong>⚠️ 新入学警告：</strong></p>
-                <p style="text-indent:0;" id="admin-player-warning">
-                    新生评估尚未完成，但该用户已通过搜索行为发现了多份机密档案。
-                    建议尽快安排供体评估。
-                </p>
-            </div>
-        </div>
-    </main>
-
-    <div id="app-footer"></div>
-
-    <script src="js/utils/storage.js"></script>
-    <script src="js/utils/dom.js"></script>
-    <script src="data/index.js"></script>
-    <script src="js/core/game-state.js"></script>
-    <script src="js/core/story-data.js"></script>
-    <script src="js/core/search-engine.js"></script>
-    <script src="js/core/router.js"></script>
-    <script src="js/components/layout.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        GameState.init();
-        StoryData.load();
-        SearchEngine.init(STORY_DATA_PAGES);
-        window._totalPageCount = StoryData.getTotalPageCount();
-        Router.init();
-
-        var state = GameState.getState();
-        Layout.renderFooter('—', window._totalPageCount);
-
-        if (state.level >= 2) {
-            document.getElementById('admin-denied').style.display = 'none';
-            document.getElementById('admin-panel').style.display = 'block';
-            Layout.renderHeader('管理后台');
-
-            var name = state.playerName || '新生';
-            document.getElementById('admin-player-warning').innerHTML =
-                '新生 <strong>' + escapeHtml(name) + '</strong> 的评估尚未完成，' +
-                '但该用户已通过搜索行为发现了 ' + state.searchHistory.length + ' 份机密档案。' +
-                '建议尽快安排供体评估。';
-        } else {
-            document.getElementById('admin-denied').style.display = 'block';
-            document.getElementById('admin-panel').style.display = 'none';
-            document.getElementById('current-level-display').textContent = state.level;
-            Layout.renderHeader('管理后台');
-        }
-    });
-
-    function escapeHtml(str) {
-        var div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
-    }
-    </script>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>教师后台</title><link rel="stylesheet" href="css/reset.css"><link rel="stylesheet" href="css/common.css"></head>
+<body data-page-id="admin" data-required-level="5" data-is-hidden="false">
+  <div id="app-header"></div>
+  <main class="main-content">
+    <section class="card">
+      <h2>教师后台</h2>
+      <p class="muted">实验记录、供体清单和最终计划已开放。搜索“宿主替换”可进入最终真相入口。</p>
+      <div class="action-grid">
+        <a class="action-card" href="hidden/archive.html" onclick="GameState.foundPage('archive')">学生档案库</a>
+        <a class="action-card" href="hidden/supply.html" onclick="GameState.foundPage('supply')">供体转运清单</a>
+        <a class="action-card" href="hidden/map.html" onclick="GameState.foundPage('map')">地下设施地图</a>
+        <a class="action-card" href="hidden/truth.html" onclick="GameState.foundPage('truth')">最终真相</a>
+      </div>
+    </section>
+  </main>
+  <div id="app-footer"></div>
+  <script src="js/utils/storage.js"></script><script src="data/index.js"></script><script src="js/core/game-state.js"></script><script src="js/core/story-data.js"></script><script src="js/core/search-engine.js"></script><script src="js/core/account-manager.js"></script><script src="js/core/router.js"></script><script src="js/components/layout.js"></script><script>document.addEventListener('DOMContentLoaded',()=>Layout.init('教师后台','Lv5'));</script>
 </body>
 </html>

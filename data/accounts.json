@@ -1,26 +1,26 @@
 {
-  "player": {
-    "id": "player",
-    "displayName": "玩家",
-    "level": 0,
-    "passwordType": "player-set",
-    "passwordHint": "你入学时设置的生日密码",
-    "description": "新入学学生，权限受限"
-  },
   "chen-yutong": {
     "id": "chen-yutong",
+    "username": "chen-yutong",
     "displayName": "陈雨桐",
+    "role": "student",
     "level": 1,
-    "passwordHash": "4030c42b313a82b953d14f04a85ff9dd9739e49a97d90631b7fb3029cca1d6e1",
-    "passwordHint": "名单页显示的生日，格式：MMDD",
-    "description": "已结业学生，档案中可查到她的完整选课记录"
+    "passwordHash": "4030c42b313a82b953d14f04a85ff9dd9739e49a97d90631b7fb3029cca1d6e1"
+  },
+  "lin-mo": {
+    "id": "lin-mo",
+    "username": "lin-mo",
+    "displayName": "林墨",
+    "role": "assistant",
+    "level": 2,
+    "passwordHash": "ff641dab77828ef509ed6cafa6e79dc6c7fb4dca8a217750272e96d7203d2491"
   },
   "lu-xiaoji": {
     "id": "lu-xiaoji",
+    "username": "lu-xiaoji",
     "displayName": "陆晓济",
-    "level": 2,
-    "passwordHash": "0bf5b6b1c1a174b6b5b3c8800ed1a6d60060d16418f4fe988edcec706d82e000",
-    "passwordHint": "密码为完整的8位生日，格式：YYYYMMDD",
-    "description": "学院系统管理员，拥有全部数据访问权限"
+    "role": "teacher",
+    "level": 5,
+    "passwordHash": "0bf5b6b1c1a174b6b5b3c8800ed1a6d60060d16418f4fe988edcec706d82e000"
   }
 }

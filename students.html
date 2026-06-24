@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学生名单 - 酆都在线学院</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body data-page-id="students" data-required-level="0" data-is-hidden="false">
+  <div id="app-header"></div>
+  <main class="main-content">
+    <section class="card">
+      <h2>学生名单</h2>
+      <p class="muted">名单只显示基础状态。点击姓名进入个人主页，部分字段会随权限变化。</p>
+      <table class="data-table">
+        <thead><tr><th>姓名</th><th>状态</th><th>最近活跃</th></tr></thead>
+        <tbody id="student-list"></tbody>
+      </table>
+    </section>
+  </main>
+  <div id="app-footer"></div>
+  <script src="js/utils/storage.js"></script>
+  <script src="data/index.js"></script>
+  <script src="js/core/game-state.js"></script>
+  <script src="js/core/story-data.js"></script>
+  <script src="js/core/search-engine.js"></script>
+  <script src="js/core/account-manager.js"></script>
+  <script src="js/core/router.js"></script>
+  <script src="js/components/layout.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Layout.init('学生名单');
+      const state = GameState.getState();
+      const rows = StoryData.getPeopleByType('student').map(person => `
+        <tr>
+          <td><a href="${person.profilePage}">${person.displayName}</a></td>
+          <td><span class="status-pill">${state.level >= 1 ? person.privateStatus : person.publicStatus}</span></td>
+          <td>${person.recent}</td>
+        </tr>
+      `).join('');
+      document.getElementById('student-list').innerHTML = rows;
+    });
+  </script>
+</body>
+</html>
