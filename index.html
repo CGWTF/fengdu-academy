@@ -7,17 +7,23 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/common.css">
 </head>
-<body data-page-id="index" data-required-level="0" data-is-hidden="false">
-  <main class="main-content">
-    <div class="video-ad-container">
-      <div class="video-ad-screen">
-        <div class="video-ad-timer" id="timer">10 秒后可关闭</div>
-        <button class="video-ad-close" id="closeBtn" aria-label="关闭">X</button>
-        <h1>酆都在线学院</h1>
-        <p style="text-indent:0;margin-top:16px;">你收到了一份无法关闭的入学通知。</p>
-        <p class="muted">系统正在确认访问者停留时间...</p>
+<body data-page-id="index" data-required-level="0" data-is-hidden="false" class="entry-body">
+  <main class="entry-page">
+    <section class="entry-panel">
+      <div class="entry-meta">
+        <span>FENGDU ONLINE ACADEMY</span>
+        <span id="timer">10 秒后可关闭</span>
       </div>
-    </div>
+      <div class="entry-content">
+        <p class="entry-kicker">系统通知</p>
+        <h1>酆都在线学院</h1>
+        <p>你的访问已被学籍系统接收。页面将在停留校验完成后开放关闭选项。</p>
+      </div>
+      <div class="entry-footer">
+        <span>STATUS: VISITOR HOLD</span>
+        <button class="entry-close" id="closeBtn" disabled>关闭</button>
+      </div>
+    </section>
   </main>
   <script>
     sessionStorage.removeItem('ad_passed');
@@ -30,6 +36,7 @@
       if (seconds <= 0) {
         clearInterval(tick);
         timer.textContent = '可关闭';
+        closeBtn.disabled = false;
         closeBtn.classList.add('visible');
       }
     }, 1000);
