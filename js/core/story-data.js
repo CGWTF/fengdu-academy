@@ -8,7 +8,7 @@ const StoryData = {
   searchIndex: { entries: [] },
 
   load() {
-    this.pages = window.STORY_DATA_PAGES || {};
+    this.pages = this._decodeUrls(window.STORY_DATA_PAGES || {});
     this.courses = window.STORY_DATA_COURSES || {};
     this.accounts = window.STORY_DATA_ACCOUNTS || {};
     this.people = window.STORY_DATA_PEOPLE || {};
@@ -16,6 +16,17 @@ const StoryData = {
     this.searchIndex = window.STORY_DATA_SEARCH_INDEX || { entries: [] };
     this._loaded = true;
     return true;
+  },
+
+  _decodeUrls(pages) {
+    const decoded = {};
+    Object.entries(pages).forEach(([key, page]) => {
+      decoded[key] = { ...page };
+      if (page.url) {
+        try { decoded[key].url = atob(page.url); } catch (e) { /* keep raw if not base64 */ }
+      }
+    });
+    return decoded;
   },
 
   getPage(id) { return this.pages[id] || null; },

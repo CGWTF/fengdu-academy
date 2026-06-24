@@ -1,37 +1,37 @@
 window.STORY_DATA_PAGES = {
-  index: { id: 'index', title: '广告入口', url: 'index.html', requiredLevel: 0, hidden: false },
-  home: { id: 'home', title: '新生主页', url: 'home.html', requiredLevel: 0, hidden: false },
-  login: { id: 'login', title: '账号登录', url: 'login.html', requiredLevel: 0, hidden: false },
-  courses: { id: 'courses', title: '课程中心', url: 'courses.html', requiredLevel: 0, hidden: false },
-  students: { id: 'students', title: '学生名单', url: 'students.html', requiredLevel: 0, hidden: false },
-  search: { id: 'search', title: '搜索记录', url: 'search.html', requiredLevel: 0, hidden: false },
-  notice: { id: 'notice', title: '通知公告', url: 'notice.html', requiredLevel: 2, hidden: false },
-  withdraw: { id: 'withdraw', title: '退学申请', url: 'withdraw.html', requiredLevel: 0, hidden: false, keywords: [] },
-  admin: { id: 'admin', title: '教师后台', url: 'admin.html', requiredLevel: 5, hidden: false },
-  'course-01': { id: 'course-01', title: '断头练习与再生', url: 'course-01.html', requiredLevel: 0, hidden: false },
-  'course-02': { id: 'course-02', title: '抽血复活术基础', url: 'course-02.html', requiredLevel: 0, hidden: false },
-  'course-03': { id: 'course-03', title: '灵体感知入门', url: 'course-03.html', requiredLevel: 0, hidden: false },
-  'course-04': { id: 'course-04', title: '禁忌药理学', url: 'course-04.html', requiredLevel: 0, hidden: false },
-  'course-05': { id: 'course-05', title: '时间停滞理论', url: 'course-05.html', requiredLevel: 0, hidden: false },
-  'course-06': { id: 'course-06', title: '记忆转移实操', url: 'course-06.html', requiredLevel: 0, hidden: false },
-  'student-chen-yutong': { id: 'student-chen-yutong', title: '陈雨桐档案详情', url: 'student/chen-yutong.html', requiredLevel: 0, hidden: false },
-  'student-lin-mo': { id: 'student-lin-mo', title: '林墨档案详情', url: 'student/lin-mo.html', requiredLevel: 0, hidden: false },
-  'student-zhou-yuan': { id: 'student-zhou-yuan', title: '周远档案详情', url: 'student/zhou-yuan.html', requiredLevel: 0, hidden: false },
-  'teacher-lu-xiaoji': { id: 'teacher-lu-xiaoji', title: '陆晓济教师主页', url: 'teacher/lu-xiaoji.html', requiredLevel: 2, hidden: false },
-  orientation: { id: 'orientation', title: '异常入学须知', url: 'hidden/orientation.html', requiredLevel: 0, hidden: true },
-  'exp-001': { id: 'exp-001', title: '实验记录001', url: 'hidden/exp-001.html', requiredLevel: 1, hidden: true },
-  'exp-002': { id: 'exp-002', title: '事故报告', url: 'hidden/exp-002.html', requiredLevel: 1, hidden: true },
-  supply: { id: 'supply', title: '供体转运清单', url: 'hidden/supply.html', requiredLevel: 1, hidden: true },
-  archive: { id: 'archive', title: '学生档案库', url: 'hidden/archive.html', requiredLevel: 1, hidden: true },
-  map: { id: 'map', title: '地下设施地图', url: 'hidden/map.html', requiredLevel: 2, hidden: true },
-  truth: { id: 'truth', title: '最终真相', url: 'hidden/truth.html', requiredLevel: 5, hidden: true }
+  index: { id: 'index', title: '广告入口', url: 'aW5kZXguaHRtbA==', requiredLevel: 0, hidden: false },
+  home: { id: 'home', title: '新生主页', url: 'aG9tZS5odG1s', requiredLevel: 0, hidden: false },
+  login: { id: 'login', title: '账号登录', url: 'bG9naW4uaHRtbA==', requiredLevel: 0, hidden: false },
+  courses: { id: 'courses', title: '课程中心', url: 'Y291cnNlcy5odG1s', requiredLevel: 0, hidden: false },
+  students: { id: 'students', title: '学生名单', url: 'c3R1ZGVudHMuaHRtbA==', requiredLevel: 0, hidden: false },
+  search: { id: 'search', title: '搜索记录', url: 'c2VhcmNoLmh0bWw=', requiredLevel: 0, hidden: false },
+  notice: { id: 'notice', title: '通知公告', url: 'bm90aWNlLmh0bWw=', requiredLevel: 2, hidden: false },
+  withdraw: { id: 'withdraw', title: '退学申请', url: 'd2l0aGRyYXcuaHRtbA==', requiredLevel: 0, hidden: false, keywords: [] },
+  admin: { id: 'admin', title: '教师后台', url: 'YWRtaW4uaHRtbA==', requiredLevel: 5, hidden: false },
+  'course-01': { id: 'course-01', title: '断头练习与再生', url: 'Y291cnNlLTAxLmh0bWw=', requiredLevel: 0, hidden: false },
+  'course-02': { id: 'course-02', title: '抽血复活术基础', url: 'Y291cnNlLTAyLmh0bWw=', requiredLevel: 0, hidden: false },
+  'course-03': { id: 'course-03', title: '灵体感知入门', url: 'Y291cnNlLTAzLmh0bWw=', requiredLevel: 0, hidden: false },
+  'course-04': { id: 'course-04', title: '禁忌药理学', url: 'Y291cnNlLTA0Lmh0bWw=', requiredLevel: 0, hidden: false },
+  'course-05': { id: 'course-05', title: '时间停滞理论', url: 'Y291cnNlLTA1Lmh0bWw=', requiredLevel: 0, hidden: false },
+  'course-06': { id: 'course-06', title: '记忆转移实操', url: 'Y291cnNlLTA2Lmh0bWw=', requiredLevel: 0, hidden: false },
+  'student-chen-yutong': { id: 'student-chen-yutong', title: '陈雨桐档案详情', url: 'c3R1ZGVudC9jaGVuLXl1dG9uZy5odG1s', requiredLevel: 0, hidden: false },
+  'student-lin-mo': { id: 'student-lin-mo', title: '林墨档案详情', url: 'c3R1ZGVudC9saW4tbW8uaHRtbA==', requiredLevel: 0, hidden: false },
+  'student-zhou-yuan': { id: 'student-zhou-yuan', title: '周远档案详情', url: 'c3R1ZGVudC96aG91LXl1YW4uaHRtbA==', requiredLevel: 0, hidden: false },
+  'teacher-lu-xiaoji': { id: 'teacher-lu-xiaoji', title: '陆晓济教师主页', url: 'dGVhY2hlci9sdS14aWFvamkuaHRtbA==', requiredLevel: 2, hidden: false },
+  orientation: { id: 'orientation', title: '异常入学须知', url: 'aGlkZGVuL29yaWVudGF0aW9uLmh0bWw=', requiredLevel: 0, hidden: true },
+  'exp-001': { id: 'exp-001', title: '实验记录001', url: 'aGlkZGVuL2V4cC0wMDEuaHRtbA==', requiredLevel: 1, hidden: true },
+  'exp-002': { id: 'exp-002', title: '事故报告', url: 'aGlkZGVuL2V4cC0wMDIuaHRtbA==', requiredLevel: 1, hidden: true },
+  supply: { id: 'supply', title: '供体转运清单', url: 'aGlkZGVuL3N1cHBseS5odG1s', requiredLevel: 1, hidden: true },
+  archive: { id: 'archive', title: '学生档案库', url: 'aGlkZGVuL2FyY2hpdmUuaHRtbA==', requiredLevel: 1, hidden: true },
+  map: { id: 'map', title: '地下设施地图', url: 'aGlkZGVuL21hcC5odG1s', requiredLevel: 2, hidden: true },
+  truth: { id: 'truth', title: '最终真相', url: 'aGlkZGVuL3RydXRoLmh0bWw=', requiredLevel: 5, hidden: true }
 };
 
 window.STORY_DATA_COURSES = {
   C01: {
     id: 'C01',
     pageId: 'course-01',
-    url: 'course-01.html',
+    url: 'Y291cnNlLTAxLmh0bWw=',
     title: '断头练习与再生',
     instructor: '钟教授',
     description: '再生缝合实训，器材清单含学院专用<strong>缝合线</strong>。历史文献条目标记为<strong>不死术</strong>。',
@@ -40,7 +40,7 @@ window.STORY_DATA_COURSES = {
   C02: {
     id: 'C02',
     pageId: 'course-02',
-    url: 'course-02.html',
+    url: 'Y291cnNlLTAyLmh0bWw=',
     title: '抽血复活术基础',
     instructor: '沈教授',
     description: '<strong>血型匹配</strong>与复活回注流程，<strong>供体筛选</strong>章节暂不公开。',
@@ -49,7 +49,7 @@ window.STORY_DATA_COURSES = {
   C03: {
     id: 'C03',
     pageId: 'course-03',
-    url: 'course-03.html',
+    url: 'Y291cnNlLTAzLmh0bWw=',
     title: '灵体感知入门',
     instructor: '陆晓济（代课）',
     description: '<strong>濒死体验</strong>训练需提交确认书。代课记录登记在<strong>陆晓济</strong>名下。',
@@ -58,7 +58,7 @@ window.STORY_DATA_COURSES = {
   C04: {
     id: 'C04',
     pageId: 'course-04',
-    url: 'course-04.html',
+    url: 'Y291cnNlLTA0Lmh0bWw=',
     title: '禁忌药理学',
     instructor: '吴教授',
     description: '还魂汤配伍与样本稳定实验，材料登记含<strong>活体提取</strong>字段。',
@@ -67,7 +67,7 @@ window.STORY_DATA_COURSES = {
   C05: {
     id: 'C05',
     pageId: 'course-05',
-    url: 'course-05.html',
+    url: 'Y291cnNlLTA1Lmh0bWw=',
     title: '时间停滞理论',
     instructor: '赵教授',
     description: '生命暂停理论、封存编号与<strong>冷冻库</strong>维护巡检。',
@@ -76,7 +76,7 @@ window.STORY_DATA_COURSES = {
   C06: {
     id: 'C06',
     pageId: 'course-06',
-    url: 'course-06.html',
+    url: 'Y291cnNlLTA2Lmh0bWw=',
     title: '记忆转移实操',
     instructor: '钟教授',
     description: '意识上传、<strong>宿主替换</strong>与维护签名：<strong>陆晓济</strong>。',
@@ -91,7 +91,7 @@ window.STORY_DATA_ACCOUNTS = {
     displayName: '陈雨桐',
     role: 'student',
     level: 1,
-    passwordHash: '4030c42b313a82b953d14f04a85ff9dd9739e49a97d90631b7fb3029cca1d6e1',
+    passwordHash: '986162058ab6bb0966a92ee16aa1adf3',
     hintPageIds: ['student-chen-yutong']
   },
   'lin-mo': {
@@ -100,7 +100,7 @@ window.STORY_DATA_ACCOUNTS = {
     displayName: '林墨',
     role: 'assistant',
     level: 2,
-    passwordHash: 'ff641dab77828ef509ed6cafa6e79dc6c7fb4dca8a217750272e96d7203d2491',
+    passwordHash: '5167aca0cc67fe216140fd438eb906e3',
     hintPageIds: ['student-lin-mo', 'archive']
   },
   'lu-xiaoji': {
@@ -109,7 +109,7 @@ window.STORY_DATA_ACCOUNTS = {
     displayName: '陆晓济',
     role: 'teacher',
     level: 5,
-    passwordHash: '0bf5b6b1c1a174b6b5b3c8800ed1a6d60060d16418f4fe988edcec706d82e000',
+    passwordHash: '5948fb9928386ad98b2b6b92cc474871',
     hintPageIds: ['teacher-lu-xiaoji', 'supply', 'map', 'archive']
   }
 };
