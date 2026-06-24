@@ -13,9 +13,9 @@ window.STORY_DATA_PAGES = {
   'course-04': { id: 'course-04', title: '禁忌药理学', url: 'course-04.html', requiredLevel: 0, hidden: false },
   'course-05': { id: 'course-05', title: '时间停滞理论', url: 'course-05.html', requiredLevel: 0, hidden: false },
   'course-06': { id: 'course-06', title: '记忆转移实操', url: 'course-06.html', requiredLevel: 0, hidden: false },
-  'student-chen-yutong': { id: 'student-chen-yutong', title: '陈雨桐个人主页', url: 'student/chen-yutong.html', requiredLevel: 0, hidden: false },
-  'student-lin-mo': { id: 'student-lin-mo', title: '林墨个人主页', url: 'student/lin-mo.html', requiredLevel: 0, hidden: false },
-  'student-zhou-yuan': { id: 'student-zhou-yuan', title: '周远个人主页', url: 'student/zhou-yuan.html', requiredLevel: 0, hidden: false },
+  'student-chen-yutong': { id: 'student-chen-yutong', title: '陈雨桐档案详情', url: 'student/chen-yutong.html', requiredLevel: 0, hidden: false },
+  'student-lin-mo': { id: 'student-lin-mo', title: '林墨档案详情', url: 'student/lin-mo.html', requiredLevel: 0, hidden: false },
+  'student-zhou-yuan': { id: 'student-zhou-yuan', title: '周远档案详情', url: 'student/zhou-yuan.html', requiredLevel: 0, hidden: false },
   'teacher-lu-xiaoji': { id: 'teacher-lu-xiaoji', title: '陆晓济教师主页', url: 'teacher/lu-xiaoji.html', requiredLevel: 2, hidden: false },
   orientation: { id: 'orientation', title: '异常入学须知', url: 'hidden/orientation.html', requiredLevel: 0, hidden: true },
   'exp-001': { id: 'exp-001', title: '实验记录001', url: 'hidden/exp-001.html', requiredLevel: 1, hidden: true },
@@ -117,6 +117,7 @@ window.STORY_DATA_PEOPLE = {
   'chen-yutong': {
     id: 'chen-yutong',
     type: 'student',
+    recordNo: 'STU-2025-CYT',
     displayName: '陈雨桐',
     publicStatus: '已结业',
     privateStatus: '转运完成',
@@ -126,6 +127,7 @@ window.STORY_DATA_PEOPLE = {
   'lin-mo': {
     id: 'lin-mo',
     type: 'student',
+    recordNo: 'STU-2025-LM',
     displayName: '林墨',
     publicStatus: '实验中',
     privateStatus: '助教权限保留',
@@ -135,6 +137,7 @@ window.STORY_DATA_PEOPLE = {
   'zhou-yuan': {
     id: 'zhou-yuan',
     type: 'student',
+    recordNo: 'STU-2025-ZY',
     displayName: '周远',
     publicStatus: '已结业',
     privateStatus: '档案冻结',

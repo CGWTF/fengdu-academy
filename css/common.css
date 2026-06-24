@@ -870,6 +870,29 @@ body {
   padding: 10px;
 }
 
+.student-record .data-table th {
+  width: 18%;
+  white-space: nowrap;
+}
+
+.student-record .data-table td {
+  background: #fff;
+}
+
+.record-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  background: #fdfcf9;
+  border: 1px solid var(--border);
+  color: var(--text-light);
+  font-family: "Courier New", "SimSun", monospace;
+  font-size: 0.86rem;
+}
+
 .truth-stage {
   min-height: 260px;
 }

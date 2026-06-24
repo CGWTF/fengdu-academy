@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>林墨</title><link rel="stylesheet" href="../css/reset.css?v=20260624-f30b87a"><link rel="stylesheet" href="../css/common.css?v=20260624-f30b87a"></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>林墨</title><link rel="stylesheet" href="../css/reset.css?v=20260624-student-records"><link rel="stylesheet" href="../css/common.css?v=20260624-student-records"></head>
 <body data-page-id="student-lin-mo" data-required-level="0" data-is-hidden="false" data-person-id="lin-mo">
   <div id="app-header"></div>
   <main class="main-content">
-    <section class="card">
-      <h2>林墨</h2>
-      <div class="profile-meta">
-        <div>状态：<span class="status-pill">实验中</span></div>
-        <div>课程：禁忌药理学</div>
-        <div>最近留言：04/26 门禁更新</div>
+    <section class="card student-record">
+      <h2>学生档案详情</h2>
+      <div class="record-toolbar">
+        <span>档案编号：STU-2025-LM</span>
+        <span>视图：公开学籍</span>
       </div>
-      <p>林墨的公开主页没有联系方式。内部档案视图里出现一条留言：“04/26 后旧门禁还能用，助教账号别删。”</p>
+      <table class="data-table">
+        <tr><th>姓名</th><td>林墨</td><th>学籍状态</th><td><span class="status-pill">实验中</span></td></tr>
+        <tr><th>课程记录</th><td>禁忌药理学</td><th>账号状态</th><td>助教权限待同步</td></tr>
+        <tr><th>最近留言</th><td>04/26 门禁更新</td><th>门禁策略</th><td>旧凭据保留</td></tr>
+        <tr><th>联系方式</th><td colspan="3">未公开</td></tr>
+      </table>
+      <h3>站内消息</h3>
+      <div class="record-card">
+        [04/26 18:12] 门禁系统完成夜间批量更新。<br>
+        [04/26 18:19] 留言同步：旧门禁仍可使用，助教账号暂勿删除。<br>
+        [04/27 01:03] 学籍状态同步失败，等待实验室端确认。
+      </div>
       <div id="private"></div>
     </section>
   </main>
   <div id="app-footer"></div>
-  <script src="../js/utils/storage.js?v=20260624-f30b87a"></script><script src="../data/index.js?v=20260624-f30b87a"></script><script src="../js/core/game-state.js?v=20260624-f30b87a"></script><script src="../js/core/story-data.js?v=20260624-f30b87a"></script><script src="../js/core/search-engine.js?v=20260624-f30b87a"></script><script src="../js/core/account-manager.js?v=20260624-f30b87a"></script><script src="../js/core/router.js?v=20260624-f30b87a"></script><script src="../js/components/layout.js?v=20260624-f30b87a"></script>
-  <script>document.addEventListener('DOMContentLoaded',()=>{Layout.init('学生个人主页','林墨');if(GameState.getState().level>=1){document.getElementById('private').innerHTML='<div class="record-card">助教权限仍在。ID: lin-mo。门禁更新：04/26。</div>';}});</script>
+  <script src="../js/utils/storage.js?v=20260624-student-records"></script><script src="../data/index.js?v=20260624-student-records"></script><script src="../js/core/game-state.js?v=20260624-student-records"></script><script src="../js/core/story-data.js?v=20260624-student-records"></script><script src="../js/core/search-engine.js?v=20260624-student-records"></script><script src="../js/core/account-manager.js?v=20260624-student-records"></script><script src="../js/core/router.js?v=20260624-student-records"></script><script src="../js/components/layout.js?v=20260624-student-records"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{Layout.init('学生档案详情','林墨');if(GameState.getState().level>=1){document.getElementById('private').innerHTML='<h3>内部字段</h3><table class="data-table"><tr><th>账号 ID</th><td>lin-mo</td></tr><tr><th>权限状态</th><td>助教权限仍在</td></tr><tr><th>门禁更新</th><td>04/26</td></tr></table>';}});</script>
 </body>
 </html>

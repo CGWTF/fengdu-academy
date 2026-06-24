@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>陈雨桐</title><link rel="stylesheet" href="../css/reset.css?v=20260624-f30b87a"><link rel="stylesheet" href="../css/common.css?v=20260624-f30b87a"></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>陈雨桐</title><link rel="stylesheet" href="../css/reset.css?v=20260624-student-records"><link rel="stylesheet" href="../css/common.css?v=20260624-student-records"></head>
 <body data-page-id="student-chen-yutong" data-required-level="0" data-is-hidden="false" data-person-id="chen-yutong">
   <div id="app-header"></div>
   <main class="main-content">
-    <section class="card">
-      <h2>陈雨桐</h2>
-      <div class="profile-meta">
-        <div>状态：<span class="status-pill">已结业</span></div>
-        <div>课程：灵体感知 / 记忆转移</div>
-        <div>最近公开登录：7/15 23:41</div>
+    <section class="card student-record">
+      <h2>学生档案详情</h2>
+      <div class="record-toolbar">
+        <span>档案编号：STU-2025-CYT</span>
+        <span>视图：公开学籍</span>
       </div>
-      <p>她的主页很少更新。留言区里有人提醒她：“7/15 那天别忘了把课表截图发我。”同一天深夜，她提交过一次退课申请，状态显示为驳回。</p>
-      <div class="record-card">站内消息：你的纪念日提醒已关闭。若需恢复，请使用本人账号重新登录。</div>
+      <table class="data-table">
+        <tr><th>姓名</th><td>陈雨桐</td><th>学籍状态</th><td><span class="status-pill">已结业</span></td></tr>
+        <tr><th>课程记录</th><td>灵体感知 / 记忆转移</td><th>账号状态</th><td>纪念日提醒关闭</td></tr>
+        <tr><th>最近公开登录</th><td>07/15 23:41</td><th>退课申请</th><td>驳回</td></tr>
+        <tr><th>联系方式</th><td colspan="3">未公开</td></tr>
+      </table>
+      <h3>系统日志</h3>
+      <div class="record-card">
+        [07/15 23:41] 账号 chen-yutong 提交课表截图同步请求。<br>
+        [07/15 23:58] 退课申请被驳回，原因字段由教务系统隐藏。<br>
+        [07/16 00:03] 纪念日提醒关闭。若需恢复，请使用本人账号重新登录。
+      </div>
       <div id="private"></div>
     </section>
   </main>
   <div id="app-footer"></div>
-  <script src="../js/utils/storage.js?v=20260624-f30b87a"></script><script src="../data/index.js?v=20260624-f30b87a"></script><script src="../js/core/game-state.js?v=20260624-f30b87a"></script><script src="../js/core/story-data.js?v=20260624-f30b87a"></script><script src="../js/core/search-engine.js?v=20260624-f30b87a"></script><script src="../js/core/account-manager.js?v=20260624-f30b87a"></script><script src="../js/core/router.js?v=20260624-f30b87a"></script><script src="../js/components/layout.js?v=20260624-f30b87a"></script>
-  <script>document.addEventListener('DOMContentLoaded',()=>{Layout.init('学生个人主页','陈雨桐');GameState.foundPage('student-chen-yutong');if(GameState.getState().level>=1){document.getElementById('private').innerHTML='<div class="record-card">完整档案：结业并非毕业。转运编号 TR-2024-0315。后续字段：供体筛选。</div>';}});</script>
+  <script src="../js/utils/storage.js?v=20260624-student-records"></script><script src="../data/index.js?v=20260624-student-records"></script><script src="../js/core/game-state.js?v=20260624-student-records"></script><script src="../js/core/story-data.js?v=20260624-student-records"></script><script src="../js/core/search-engine.js?v=20260624-student-records"></script><script src="../js/core/account-manager.js?v=20260624-student-records"></script><script src="../js/core/router.js?v=20260624-student-records"></script><script src="../js/components/layout.js?v=20260624-student-records"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{Layout.init('学生档案详情','陈雨桐');GameState.foundPage('student-chen-yutong');if(GameState.getState().level>=1){document.getElementById('private').innerHTML='<h3>内部字段</h3><table class="data-table"><tr><th>结业解释</th><td>转运完成</td></tr><tr><th>转运编号</th><td>TR-2024-0315</td></tr><tr><th>后续审核</th><td>供体筛选</td></tr></table>';}});</script>
 </body>
 </html>

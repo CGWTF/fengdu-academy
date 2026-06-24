@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>周远</title><link rel="stylesheet" href="../css/reset.css?v=20260624-f30b87a"><link rel="stylesheet" href="../css/common.css?v=20260624-f30b87a"></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>周远</title><link rel="stylesheet" href="../css/reset.css?v=20260624-student-records"><link rel="stylesheet" href="../css/common.css?v=20260624-student-records"></head>
 <body data-page-id="student-zhou-yuan" data-required-level="0" data-is-hidden="false" data-person-id="zhou-yuan">
   <div id="app-header"></div>
-  <main class="main-content"><section class="card"><h2>周远</h2><p>档案显示“已结业”，但没有毕业去向，也没有联系方式。页面底部的转出日期被遮盖。</p></section></main>
+  <main class="main-content">
+    <section class="card student-record">
+      <h2>学生档案详情</h2>
+      <div class="record-toolbar">
+        <span>档案编号：STU-2025-ZY</span>
+        <span>视图：公开学籍</span>
+      </div>
+      <table class="data-table">
+        <tr><th>姓名</th><td>周远</td><th>学籍状态</th><td><span class="status-pill">已结业</span></td></tr>
+        <tr><th>课程记录</th><td>抽血复活术基础 / 时间停滞理论</td><th>档案状态</th><td>冻结</td></tr>
+        <tr><th>毕业去向</th><td>未登记</td><th>联系方式</th><td>未公开</td></tr>
+        <tr><th>转出日期</th><td colspan="3">字段被遮盖</td></tr>
+      </table>
+      <h3>系统日志</h3>
+      <div class="record-card">
+        [--/-- --:--] 学籍转出记录被遮盖。<br>
+        [06/04 02:17] 课程结业口径同步完成。<br>
+        [06/04 02:21] 公开联系方式清空。
+      </div>
+    </section>
+  </main>
   <div id="app-footer"></div>
-  <script src="../js/utils/storage.js?v=20260624-f30b87a"></script><script src="../data/index.js?v=20260624-f30b87a"></script><script src="../js/core/game-state.js?v=20260624-f30b87a"></script><script src="../js/core/story-data.js?v=20260624-f30b87a"></script><script src="../js/core/search-engine.js?v=20260624-f30b87a"></script><script src="../js/core/account-manager.js?v=20260624-f30b87a"></script><script src="../js/core/router.js?v=20260624-f30b87a"></script><script src="../js/components/layout.js?v=20260624-f30b87a"></script><script>document.addEventListener('DOMContentLoaded',()=>Layout.init('学生个人主页','周远'));</script>
+  <script src="../js/utils/storage.js?v=20260624-student-records"></script><script src="../data/index.js?v=20260624-student-records"></script><script src="../js/core/game-state.js?v=20260624-student-records"></script><script src="../js/core/story-data.js?v=20260624-student-records"></script><script src="../js/core/search-engine.js?v=20260624-student-records"></script><script src="../js/core/account-manager.js?v=20260624-student-records"></script><script src="../js/core/router.js?v=20260624-student-records"></script><script src="../js/components/layout.js?v=20260624-student-records"></script><script>document.addEventListener('DOMContentLoaded',()=>Layout.init('学生档案详情','周远'));</script>
 </body>
 </html>

@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>学生名单 - 酆都在线学院</title>
-  <link rel="stylesheet" href="css/reset.css?v=20260624-f30b87a">
-  <link rel="stylesheet" href="css/common.css?v=20260624-f30b87a">
+  <link rel="stylesheet" href="css/reset.css?v=20260624-student-records">
+  <link rel="stylesheet" href="css/common.css?v=20260624-student-records">
 </head>
 <body data-page-id="students" data-required-level="0" data-is-hidden="false">
   <div id="app-header"></div>
@@ -14,45 +14,53 @@
       <h2>学生名单</h2>
       <p class="muted">2025 级学籍总览。部分记录显示为同步延迟。</p>
       <table class="data-table">
-        <thead><tr><th>姓名</th><th>状态</th><th>最近活跃</th></tr></thead>
+        <thead><tr><th>档案编号</th><th>姓名</th><th>状态</th><th>最近活跃</th><th>操作</th></tr></thead>
         <tbody id="student-list">
           <tr>
-            <td><a href="student/chen-yutong.html">陈雨桐</a></td>
+            <td>STU-2025-CYT</td>
+            <td>陈雨桐</td>
             <td><span class="status-pill">已结业</span></td>
             <td>最后一次公开登录：7/15 23:41</td>
+            <td><a href="student/chen-yutong.html">打开档案</a></td>
           </tr>
           <tr>
-            <td><a href="student/lin-mo.html">林墨</a></td>
+            <td>STU-2025-LM</td>
+            <td>林墨</td>
             <td><span class="status-pill">实验中</span></td>
             <td>留言提到 04/26 的门禁更新</td>
+            <td><a href="student/lin-mo.html">打开档案</a></td>
           </tr>
           <tr>
-            <td><a href="student/zhou-yuan.html">周远</a></td>
+            <td>STU-2025-ZY</td>
+            <td>周远</td>
             <td><span class="status-pill">已结业</span></td>
             <td>无联系方式</td>
+            <td><a href="student/zhou-yuan.html">打开档案</a></td>
           </tr>
         </tbody>
       </table>
     </section>
   </main>
   <div id="app-footer"></div>
-  <script src="js/utils/storage.js?v=20260624-f30b87a"></script>
-  <script src="data/index.js?v=20260624-f30b87a"></script>
-  <script src="js/core/game-state.js?v=20260624-f30b87a"></script>
-  <script src="js/core/story-data.js?v=20260624-f30b87a"></script>
-  <script src="js/core/search-engine.js?v=20260624-f30b87a"></script>
-  <script src="js/core/account-manager.js?v=20260624-f30b87a"></script>
-  <script src="js/core/router.js?v=20260624-f30b87a"></script>
-  <script src="js/components/layout.js?v=20260624-f30b87a"></script>
+  <script src="js/utils/storage.js?v=20260624-student-records"></script>
+  <script src="data/index.js?v=20260624-student-records"></script>
+  <script src="js/core/game-state.js?v=20260624-student-records"></script>
+  <script src="js/core/story-data.js?v=20260624-student-records"></script>
+  <script src="js/core/search-engine.js?v=20260624-student-records"></script>
+  <script src="js/core/account-manager.js?v=20260624-student-records"></script>
+  <script src="js/core/router.js?v=20260624-student-records"></script>
+  <script src="js/components/layout.js?v=20260624-student-records"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       Layout.init('学生名单');
       const state = GameState.getState();
       const rows = StoryData.getPeopleByType('student').map(person => `
         <tr>
-          <td><a href="${person.profilePage}">${person.displayName}</a></td>
+          <td>${person.recordNo || person.id}</td>
+          <td>${person.displayName}</td>
           <td><span class="status-pill">${state.level >= 1 ? person.privateStatus : person.publicStatus}</span></td>
           <td>${person.recent}</td>
+          <td><a href="${person.profilePage}">打开档案</a></td>
         </tr>
       `).join('');
       if (rows) document.getElementById('student-list').innerHTML = rows;
