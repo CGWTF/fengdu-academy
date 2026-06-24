@@ -14,28 +14,25 @@
       <h2>学生名单</h2>
       <p class="muted">2025 级学籍总览。部分记录显示为同步延迟。</p>
       <table class="data-table">
-        <thead><tr><th>档案编号</th><th>姓名</th><th>状态</th><th>最近活跃</th><th>操作</th></tr></thead>
+        <thead><tr><th>档案编号</th><th>姓名</th><th>状态</th><th>最近活跃</th></tr></thead>
         <tbody id="student-list">
           <tr>
             <td>STU-2025-CYT</td>
-            <td>陈雨桐</td>
+            <td><a href="student/chen-yutong.html" class="student-name">陈雨桐</a></td>
             <td><span class="status-pill">已结业</span></td>
             <td>最后一次公开登录：7/15 23:41</td>
-            <td><a href="student/chen-yutong.html">打开档案</a></td>
           </tr>
           <tr>
             <td>STU-2025-LM</td>
-            <td>林墨</td>
+            <td><a href="student/lin-mo.html" class="student-name">林墨</a></td>
             <td><span class="status-pill">实验中</span></td>
             <td>留言提到 04/26 的门禁更新</td>
-            <td><a href="student/lin-mo.html">打开档案</a></td>
           </tr>
           <tr>
             <td>STU-2025-ZY</td>
-            <td>周远</td>
+            <td><a href="student/zhou-yuan.html" class="student-name">周远</a></td>
             <td><span class="status-pill">已结业</span></td>
             <td>无联系方式</td>
-            <td><a href="student/zhou-yuan.html">打开档案</a></td>
           </tr>
         </tbody>
       </table>
@@ -58,10 +55,9 @@
       const rows = StoryData.getPeopleByType('student').map(person => `
         <tr>
           <td>${person.recordNo || person.id}</td>
-          <td>${person.displayName}</td>
+          <td><a href="${person.profilePage}" class="student-name">${person.displayName}</a></td>
           <td><span class="status-pill">${state.level >= 1 ? person.privateStatus : person.publicStatus}</span></td>
           <td>${person.recent}</td>
-          <td><a href="${person.profilePage}">打开档案</a></td>
         </tr>
       `).join('');
       if (rows) document.getElementById('student-list').innerHTML = rows;

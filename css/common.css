@@ -528,6 +528,18 @@ body {
   text-align: left;
 }
 
+.student-name {
+  font-weight: bold;
+  font-style: italic;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.student-name:hover {
+  color: var(--danger);
+  text-decoration: underline;
+}
+
 .data-table th {
   background: #3d3226;
   color: #e0d5c5;
