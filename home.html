@@ -31,8 +31,8 @@
     <section class="card" id="dashboard-card" style="display:none;">
       <h2>学生系统</h2>
       <p class="muted">欢迎回来，<span id="dashName"></span>。</p>
-      <p class="status-line">学籍状态：<strong class="status-observation">观察期</strong> | 等级：<strong id="dashLevel">Lv0</strong> <span class="level-tip">?
-  <span class="level-tip-box">
+      <p class="status-line">学籍状态：<strong class="status-observation">观察期</strong> | 等级：<strong id="dashLevel">Lv0</strong> <span class="level-tip" onclick="var b=this.querySelector('.level-tip-box');b.style.display=b.style.display==='block'?'none':'block';event.stopPropagation();">?
+  <span class="level-tip-box" style="display:none;">
     <em>等级划分规则</em>
     Lv0 · 0-3 学分<br>
     Lv1 · 4-6 学分<br>
@@ -64,6 +64,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       Layout.init('新生主页');
+      document.addEventListener('click',function(){var b=document.querySelector('.level-tip-box');if(b)b.style.display='none';});
       const state = GameState.getState();
       const registerCard = document.getElementById('register-card');
       const dashboardCard = document.getElementById('dashboard-card');
