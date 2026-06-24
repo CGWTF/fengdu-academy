@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>课程讨论区 — 酆都在线学院</title><link rel="stylesheet" href="css/reset.css?v=20260625"><link rel="stylesheet" href="css/common.css?v=20260625"></head>
+<body data-page-id="bbs" data-required-level="0" data-is-hidden="false">
+<div id="app-header"></div>
+<main class="main-content">
+<section class="card"><h2>💬 课程讨论区</h2><p class="muted">学生可在对应课程帖下留言交流。发言代表学籍系统实名，请注意言辞。</p></section>
+
+<!-- Lv0 可见：公开讨论 -->
+<div class="card" id="bbs-lv0">
+<h3>📌 综合讨论</h3>
+<div class="bbs-post"><span class="bbs-user">jianchen_00</span> <span class="bbs-time">6月20日</span><p>有没有人知道怎么退课啊，我点那个按钮显示维护中…</p></div>
+<div class="bbs-post"><span class="bbs-user">xu_wx2025</span> <span class="bbs-time">6月21日</span><p>别想了，据说进了这个学院就出不去了。我还在研究怎么退出，搜过「退学」也搜过了。</p></div>
+<div class="bbs-post"><span class="bbs-user">cytong2025</span> <span class="bbs-time">6月22日</span><p>断头练习课有人上过吗？缝合线真的能再生？我有点害怕但又好奇…</p></div>
+<div class="bbs-post"><span class="bbs-user">linmo_mo</span> <span class="bbs-time">6月23日</span><p>@cytong2025 我刚上完抽血复活那门课。说实话挺酷的，但血液实验室总让我觉得不太对劲。改天一起讨论。</p></div>
+</div>
+
+<!-- Lv1 可见：陈雨桐林墨互动 -->
+<div class="card" id="bbs-lv1" style="display:none;">
+<h3>📌 课程讨论（Lv1可见）</h3>
+<div class="bbs-post"><span class="bbs-user">cytong2025</span> <span class="bbs-time">6月15日</span><p>@linmo_mo 你说得对…我看到了一些不该看的东西。档案室里的供体筛选记录，你知道「结业」是什么意思吗？</p></div>
+<div class="bbs-post"><span class="bbs-user">linmo_mo</span> <span class="bbs-time">6月16日</span><p>@cytong2025 别在论坛说这个。私下聊。我门禁卡号是0426，你来找我吧。但我现在感觉有人在监视我。</p></div>
+</div>
+
+<!-- Lv2 可见：更多ID暴露 -->
+<div class="card" id="bbs-lv2" style="display:none;">
+<h3>📌 课程讨论（Lv2可见）</h3>
+<div class="bbs-post"><span class="bbs-user">zhao_sq</span> <span class="bbs-time">6月18日</span><p>有没有人选了灵体感知？陆老师那门课，好像要写确认书才能上。我攒够学分了，有点犹豫。</p></div>
+<div class="bbs-post"><span class="bbs-user">liufang_08</span> <span class="bbs-time">6月19日</span><p>@zhao_sq 陆老师的课不好抢的，一年就开一次。而且他每年十月会停课，要上的话抓紧。</p></div>
+</div>
+
+<!-- Lv3 可见：教授出现 -->
+<div class="card" id="bbs-lv3" style="display:none;">
+<h3>📌 课程讨论（Lv3可见）</h3>
+<div class="bbs-post"><span class="bbs-user">zhong_prof</span> <span class="bbs-time">6月10日</span><p>C06记忆转移实操课需要先修三门课程并获得陆主任审批。请有意的同学在断头练习课程结束后找我报名。</p></div>
+<div class="bbs-post"><span class="bbs-user">zhao_sq</span> <span class="bbs-time">6月17日</span><p>陆老师通知说十月的课全部暂停，11月恢复。大家注意安排。</p></div>
+</div>
+
+<!-- Lv4 可见：教授内部讨论 -->
+<div class="card" id="bbs-lv4" style="display:none;">
+<h3>📌 教授专区（Lv4可见）</h3>
+<div class="bbs-post"><span class="bbs-user">zhong_prof</span> <span class="bbs-time">6月5日</span><p>新一批供体评估结果出来了。A级匹配的优先安排C06宿主替换实验。详情见内部文件。</p></div>
+<div class="bbs-post"><span class="bbs-user">lxj_admin</span> <span class="bbs-time">6月6日</span><p>收到。转运计划已更新。请确保所有参与学生已完成知情确认书的「自动签署」流程。</p></div>
+</div>
+
+</main>
+<div id="app-footer"></div>
+<script src="js/utils/storage.js?v=20260625"></script><script src="data/index.js?v=20260625"></script><script src="js/core/game-state.js?v=20260625"></script><script src="js/core/story-data.js?v=20260625"></script><script src="js/core/search-engine.js?v=20260625"></script><script src="js/utils/crypto.js?v=20260625"></script><script src="js/core/account-manager.js?v=20260625"></script><script src="js/core/router.js?v=20260625"></script><script src="js/components/layout.js?v=20260625"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  Layout.init('课程讨论区');
+  var lv = GameState.getState().level;
+  if (lv >= 1) document.getElementById('bbs-lv1').style.display = 'block';
+  if (lv >= 2) document.getElementById('bbs-lv2').style.display = 'block';
+  if (lv >= 3) document.getElementById('bbs-lv3').style.display = 'block';
+  if (lv >= 4) document.getElementById('bbs-lv4').style.display = 'block';
+});
+</script>
+</body></html>

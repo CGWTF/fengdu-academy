@@ -35,6 +35,7 @@ const Layout = {
           <a href="${base}home.html">主页</a>
           <a href="${base}courses.html">课程</a>
           <a href="${base}students.html">学生</a>
+          <a href="${base}bbs.html">讨论</a>
           <a href="${base}search.html">搜索记录</a>
           <details class="cg-menu">
             <summary>CG</summary>

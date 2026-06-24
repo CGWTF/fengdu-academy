@@ -963,3 +963,75 @@ body {
   50% { background: #4b0000; }
   100% { background: #050000; }
 }
+
+/* BBS 讨论区 */
+.bbs-post {
+  background: #fdfcf9;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 10px;
+}
+.bbs-user {
+  font-weight: bold;
+  color: var(--accent);
+  margin-right: 8px;
+}
+.bbs-time {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+.bbs-post p {
+  margin-top: 6px;
+  text-indent: 0;
+  font-size: 0.9rem;
+}
+
+/* 课程卡片 */
+.course-card {
+  display: block;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  text-decoration: none;
+  color: var(--text);
+  transition: box-shadow 0.2s;
+}
+.course-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+.course-card.locked { opacity: 0.5; cursor: not-allowed; }
+.course-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.course-meta { font-size: 0.85rem; color: var(--text-light); margin-bottom: 6px; }
+.course-desc { font-size: 0.9rem; line-height: 1.6; }
+.level-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #fff;
+}
+.level-tag.lv0 { background: #888; }
+.level-tag.lv1 { background: var(--accent); }
+.level-tag.lv2 { background: #e67e22; }
+.level-tag.lv3 { background: var(--danger); }
+
+/* 管理后台快捷入口 */
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+.action-card {
+  display: block;
+  background: #fdfcf9;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: box-shadow 0.2s;
+}
+.action-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }

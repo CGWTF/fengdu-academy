@@ -1,49 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>课程中心 - 酆都在线学院</title>
-  <link rel="stylesheet" href="css/reset.css?v=20260624-student-records">
-  <link rel="stylesheet" href="css/common.css?v=20260624-student-records">
-</head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>课程中心 — 酆都在线学院</title><link rel="stylesheet" href="css/reset.css?v=20260625"><link rel="stylesheet" href="css/common.css?v=20260625"></head>
 <body data-page-id="courses" data-required-level="0" data-is-hidden="false">
-  <div id="app-header"></div>
-  <main class="main-content">
-    <section class="card">
-      <h2>课程中心</h2>
-      <p class="muted">教务处已开放本学期课程资料。课件附件会按学籍状态自动折叠。</p>
-      <div class="action-grid" id="course-list">
-        <a class="action-card" href="course-01.html"><strong>C01 · 断头练习与再生</strong><br><span class="muted">钟教授</span><br><span>再生缝合实训，器材清单含学院专用<strong>缝合线</strong>。</span></a>
-        <a class="action-card" href="course-02.html"><strong>C02 · 抽血复活术基础</strong><br><span class="muted">沈教授</span><br><span><strong>血型匹配</strong>与回注流程，<strong>供体筛选</strong>章节暂不公开。</span></a>
-        <a class="action-card" href="course-03.html"><strong>C03 · 灵体感知入门</strong><br><span class="muted">陆晓济（代课）</span><br><span><strong>濒死体验</strong>训练需提交额外确认书。</span></a>
-        <a class="action-card" href="course-04.html"><strong>C04 · 禁忌药理学</strong><br><span class="muted">吴教授</span><br><span>样本稳定实验含<strong>活体提取</strong>材料登记。</span></a>
-        <a class="action-card" href="course-05.html"><strong>C05 · 时间停滞理论</strong><br><span class="muted">赵教授</span><br><span>生命暂停维护与<strong>冷冻库</strong>巡检记录。</span></a>
-        <a class="action-card" href="course-06.html"><strong>C06 · 记忆转移实操</strong><br><span class="muted">钟教授</span><br><span>意识上传、<strong>宿主替换</strong>与维护签名。</span></a>
-      </div>
-    </section>
-  </main>
-  <div id="app-footer"></div>
-  <script src="js/utils/storage.js?v=20260624-student-records"></script>
-  <script src="data/index.js?v=20260624-student-records"></script>
-  <script src="js/core/game-state.js?v=20260624-student-records"></script>
-  <script src="js/core/story-data.js?v=20260624-student-records"></script>
-  <script src="js/core/search-engine.js?v=20260624-student-records"></script>
-  <script src="js/utils/crypto.js?v=20260624-student-records"></script><script src="js/core/account-manager.js?v=20260624-student-records"></script>
-  <script src="js/core/router.js?v=20260624-student-records"></script>
-  <script src="js/components/layout.js?v=20260624-student-records"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      Layout.init('课程中心');
-      const rendered = StoryData.getCourseList().map(course => `
-        <a class="action-card" href="${course.url}">
-          <strong>${course.id} · ${course.title}</strong><br>
-          <span class="muted">${course.instructor}</span><br>
-          <span>${course.description}</span>
-        </a>
-      `).join('');
-      if (rendered) document.getElementById('course-list').innerHTML = rendered;
-    });
-  </script>
-</body>
-</html>
+<div id="app-header"></div>
+<main class="main-content">
+<section class="card"><h2>课程中心</h2><p class="muted">本学期共开设6门课程。学分累计决定学生等级：Lv0=0-3分，Lv1=4-6分，Lv2=7-9分，Lv3=10分以上。</p>
+<div id="course-list"></div>
+</section></main>
+<div id="app-footer"></div>
+<script src="js/utils/storage.js?v=20260625"></script><script src="data/index.js?v=20260625"></script><script src="js/core/game-state.js?v=20260625"></script><script src="js/core/story-data.js?v=20260625"></script><script src="js/core/search-engine.js?v=20260625"></script><script src="js/utils/crypto.js?v=20260625"></script><script src="js/core/account-manager.js?v=20260625"></script><script src="js/core/router.js?v=20260625"></script><script src="js/components/layout.js?v=20260625"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  Layout.init('课程中心');
+  var lv=GameState.getState().level;
+  var courses=StoryData.getCourseList();
+  var html=courses.map(function(c){
+    var locked=c.requiredLevel>lv;
+    var cls=locked?'course-card locked':'course-card';
+    return '<a class="'+cls+'" href="'+(locked?'#':c.url)+'"'+(locked?' onclick="alert(\'需要 Lv'+c.requiredLevel+' 才能选修此课程\');return false;"':'')+'>'+
+      '<div class="course-header"><strong>'+c.id+' · '+c.title+'</strong><span class="level-tag lv'+c.requiredLevel+'">Lv'+c.requiredLevel+'</span></div>'+
+      '<div class="course-meta">'+c.instructor+' | '+c.credits+'学分</div>'+
+      '<div class="course-desc">'+c.description+'</div></a>';
+  }).join('');
+  document.getElementById('course-list').innerHTML=html;
+});
+</script>
+</body></html>

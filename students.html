@@ -1,67 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>学生名单 - 酆都在线学院</title>
-  <link rel="stylesheet" href="css/reset.css?v=20260624-student-records">
-  <link rel="stylesheet" href="css/common.css?v=20260624-student-records">
-</head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>学生名单 — 酆都在线学院</title><link rel="stylesheet" href="css/reset.css?v=20260625"><link rel="stylesheet" href="css/common.css?v=20260625"></head>
 <body data-page-id="students" data-required-level="0" data-is-hidden="false">
-  <div id="app-header"></div>
-  <main class="main-content">
-    <section class="card">
-      <h2>学生名单</h2>
-      <p class="muted">2025 级学籍总览。部分记录显示为同步延迟。</p>
-      <table class="data-table">
-        <thead><tr><th>档案编号</th><th>姓名</th><th>状态</th><th>最近活跃</th></tr></thead>
-        <tbody id="student-list">
-          <tr>
-            <td>STU-2025-CYT</td>
-            <td><a href="student/chen-yutong.html" class="student-name">陈雨桐</a></td>
-            <td><span class="status-pill">已结业</span></td>
-            <td>最后一次公开登录：7/15 23:41</td>
-          </tr>
-          <tr>
-            <td>STU-2025-LM</td>
-            <td><a href="student/lin-mo.html" class="student-name">林墨</a></td>
-            <td><span class="status-pill">实验中</span></td>
-            <td>留言提到 04/26 的门禁更新</td>
-          </tr>
-          <tr>
-            <td>STU-2025-ZY</td>
-            <td><a href="student/zhou-yuan.html" class="student-name">周远</a></td>
-            <td><span class="status-pill">已结业</span></td>
-            <td>无联系方式</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  </main>
-  <div id="app-footer"></div>
-  <script src="js/utils/storage.js?v=20260624-student-records"></script>
-  <script src="data/index.js?v=20260624-student-records"></script>
-  <script src="js/core/game-state.js?v=20260624-student-records"></script>
-  <script src="js/core/story-data.js?v=20260624-student-records"></script>
-  <script src="js/core/search-engine.js?v=20260624-student-records"></script>
-  <script src="js/utils/crypto.js?v=20260624-student-records"></script><script src="js/core/account-manager.js?v=20260624-student-records"></script>
-  <script src="js/core/router.js?v=20260624-student-records"></script>
-  <script src="js/components/layout.js?v=20260624-student-records"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      Layout.init('学生名单');
-      GameState.findClue('tong-birthday');
-      const state = GameState.getState();
-      const rows = StoryData.getPeopleByType('student').map(person => `
-        <tr>
-          <td>${person.recordNo || person.id}</td>
-          <td><a href="${person.profilePage}" class="student-name">${person.displayName}</a></td>
-          <td><span class="status-pill">${state.level >= 1 ? person.privateStatus : person.publicStatus}</span></td>
-          <td>${person.recent}</td>
-        </tr>
-      `).join('');
-      if (rows) document.getElementById('student-list').innerHTML = rows;
-    });
-  </script>
-</body>
-</html>
+<div id="app-header"></div>
+<main class="main-content">
+<section class="card"><h2>学生名单</h2><p class="muted">2025级学籍总览（共15人）。点击姓名查看详情。</p>
+<table class="data-table">
+<thead><tr><th>学籍号</th><th>姓名</th><th>学分</th><th>等级</th><th>状态</th><th>最近活跃</th></tr></thead>
+<tbody id="student-list"></tbody>
+</table>
+</section></main>
+<div id="app-footer"></div>
+<script src="js/utils/storage.js?v=20260625"></script><script src="data/index.js?v=20260625"></script><script src="js/core/game-state.js?v=20260625"></script><script src="js/core/story-data.js?v=20260625"></script><script src="js/core/search-engine.js?v=20260625"></script><script src="js/utils/crypto.js?v=20260625"></script><script src="js/core/account-manager.js?v=20260625"></script><script src="js/core/router.js?v=20260625"></script><script src="js/components/layout.js?v=20260625"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  Layout.init('学生名单');
+  GameState.findClue('chen-date');
+  var s=GameState.getState(),pn=s.playerName||'新生';
+  var rows=[
+    {no:'STU-2025-047',name:pn,cr:0,lv:'Lv0',st:'在读',r:'新入学',u:'home.html'},
+    {no:'STU-2025-007',name:'陈雨桐',cr:4,lv:'Lv1',st:s.level>=1?'转运完成':'已结业',r:'7/15 23:41',u:'student/chen-yutong.html'},
+    {no:'STU-2025-019',name:'林墨',cr:7,lv:'Lv2',st:s.level>=1?'观察中':'实验中',r:'门禁 04/26',u:'student/lin-mo.html'},
+    {no:'STU-2025-031',name:'赵思琪',cr:11,lv:'Lv3',st:s.level>=2?'高级学员':'在读',r:'选修灵体感知',u:'student/zhao-siqi.html'},
+    {no:'STU-2025-003',name:'周远',cr:3,lv:'Lv0',st:'已结业',r:'无联系方式',u:'withdraw.html'},
+    {no:'STU-2025-012',name:'吴小曼',cr:2,lv:'Lv0',st:'实验中',r:'档案编号缺失',u:'withdraw.html'},
+    {no:'STU-2025-005',name:'王建国',cr:5,lv:'Lv1',st:'已结业',r:'转出日期异常',u:'withdraw.html'},
+    {no:'STU-2025-022',name:'刘芳',cr:8,lv:'Lv2',st:'在读',r:'正常学习中',u:'student/liu-fang.html'},
+    {no:'STU-2025-015',name:'张明',cr:6,lv:'Lv1',st:'实验中',r:'实验 D-2025-011',u:'withdraw.html'},
+    {no:'STU-2025-028',name:'黄小蕾',cr:1,lv:'Lv0',st:'在读',r:'暂无异常',u:'student/huang-xiaolei.html'},
+    {no:'STU-2025-009',name:'孙浩',cr:9,lv:'Lv2',st:'已结业',r:'3个月前',u:'withdraw.html'},
+    {no:'STU-2025-017',name:'钱一鸣',cr:3,lv:'Lv0',st:'实验中',r:'第三阶段测试',u:'withdraw.html'},
+    {no:'STU-2025-008',name:'马晓燕',cr:10,lv:'Lv3',st:'已结业',r:'档案已归档',u:'withdraw.html'},
+    {no:'STU-2025-035',name:'江晨',cr:0,lv:'Lv0',st:'在读',r:'新入学',u:'student/jiang-chen.html'},
+    {no:'STU-2025-033',name:'许文轩',cr:2,lv:'Lv0',st:'在读',r:'正常学习中',u:'student/xu-wenxuan.html'}
+  ];
+  var html=rows.map(function(r){
+    var sc=r.st.indexOf('在读')!==-1?'status-active':r.st.indexOf('实验')!==-1?'status-experiment':'status-graduated';
+    return '<tr><td>'+r.no+'</td><td><a href="'+r.u+'" class="student-name">'+r.name+'</a></td><td>'+r.cr+'</td><td>'+r.lv+'</td><td><span class="'+sc+'">'+r.st+'</span></td><td>'+r.recent+'</td></tr>';
+  }).join('');
+  document.getElementById('student-list').innerHTML=html;
+});
+</script>
+</body></html>
