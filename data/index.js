@@ -6,7 +6,7 @@ window.STORY_DATA_PAGES = {
   students: { id: 'students', title: '学生名单', url: 'students.html', requiredLevel: 0, hidden: false },
   search: { id: 'search', title: '搜索记录', url: 'search.html', requiredLevel: 0, hidden: false },
   notice: { id: 'notice', title: '通知公告', url: 'notice.html', requiredLevel: 2, hidden: false },
-  withdraw: { id: 'withdraw', title: '退学申请', url: 'withdraw.html', requiredLevel: 0, hidden: false },
+  withdraw: { id: 'withdraw', title: '退学申请', url: 'withdraw.html', requiredLevel: 0, hidden: false, keywords: [] },
   admin: { id: 'admin', title: '教师后台', url: 'admin.html', requiredLevel: 5, hidden: false },
   'course-01': { id: 'course-01', title: '断头练习与再生', url: 'course-01.html', requiredLevel: 0, hidden: false },
   'course-02': { id: 'course-02', title: '抽血复活术基础', url: 'course-02.html', requiredLevel: 0, hidden: false },
