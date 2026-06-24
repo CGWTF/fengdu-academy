@@ -6,7 +6,7 @@ const Layout = {
 
   init(pageTitle, breadcrumb) {
     const pageId = document.body.dataset.pageId || '';
-    if (pageId !== 'index' && !sessionStorage.getItem('ad_passed')) {
+    if (pageId !== 'index' && !sessionStorage.getItem('ad_passed') && !localStorage.getItem('ad_passed')) {
       window.location.href = this.basePath() + 'index.html?gate=1';
       return;
     }

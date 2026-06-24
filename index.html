@@ -3,48 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>酆都在线学院</title>
+  <title>学籍接收 — 酆都在线学院</title>
   <link rel="stylesheet" href="css/reset.css?v=20260624-student-records">
   <link rel="stylesheet" href="css/common.css?v=20260624-student-records">
+  <style>
+    #warning-overlay {
+      position: fixed; inset: 0; background: #000;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999; opacity: 0; pointer-events: none;
+      transition: opacity 0.15s;
+    }
+    #warning-overlay.active { opacity: 1; }
+    #warning-overlay .warn-text {
+      font-size: clamp(3rem, 10vw, 7rem);
+      color: #cc0000; font-weight: 900;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      text-align: center; animation: warnPulse 0.25s infinite alternate;
+    }
+    @keyframes warnPulse {
+      from { text-shadow: 0 0 20px #cc0000; }
+      to   { text-shadow: 0 0 60px #ff0000; }
+    }
+  </style>
 </head>
 <body data-page-id="index" data-required-level="0" data-is-hidden="false" class="entry-body">
+
   <main class="entry-page">
     <section class="entry-panel">
       <div class="entry-meta">
         <span>FENGDU ONLINE ACADEMY</span>
-        <span id="timer">10 秒后可关闭</span>
+        <span id="status">学籍接收中 · 请勿关闭</span>
       </div>
+
       <div class="entry-content">
         <p class="entry-kicker">系统通知</p>
         <h1>酆都在线学院</h1>
-        <p>你的访问已被学籍系统接收。页面将在停留校验完成后开放关闭选项。</p>
+        <p>你的访问信息已被学籍接收系统登记。</p>
+        <p>系统正在校验访问环境，请稍候。</p>
       </div>
+
       <div class="entry-footer">
-        <span>STATUS: VISITOR HOLD</span>
-        <button class="entry-close" id="closeBtn" disabled>关闭</button>
+        <span id="timer-text">校验中…</span>
+        <button class="entry-close" id="closeBtn" disabled>关闭页面</button>
       </div>
     </section>
   </main>
+
+  <div id="warning-overlay"><span class="warn-text">不要入学！</span></div>
+
   <script>
-    sessionStorage.removeItem('ad_passed');
-    let seconds = 10;
-    const timer = document.getElementById('timer');
-    const closeBtn = document.getElementById('closeBtn');
-    const tick = setInterval(() => {
-      seconds -= 1;
-      timer.textContent = seconds + ' 秒后可关闭';
-      if (seconds <= 0) {
-        clearInterval(tick);
-        timer.textContent = '可关闭';
-        closeBtn.disabled = false;
-        closeBtn.classList.add('visible');
-      }
-    }, 1000);
-    closeBtn.addEventListener('click', () => {
-      closeBtn.textContent = '确认中';
+  var countdown = 7;
+  var canClose = false;
+  var enrolled = false;
+
+  var timerEl = document.getElementById('timer-text');
+  var statusEl = document.getElementById('status');
+  var closeBtn = document.getElementById('closeBtn');
+
+  var warningOverlay = document.getElementById('warning-overlay');
+
+  var tick = setInterval(function() {
+    countdown -= 1;
+    timerEl.textContent = countdown + ' 秒后可关闭';
+
+    // 倒数第2秒：黑底红字闪屏警告
+    if (countdown === 2) {
+      warningOverlay.classList.add('active');
+      setTimeout(function() {
+        warningOverlay.classList.remove('active');
+      }, 800);
+    }
+
+    if (countdown <= 0) {
+      clearInterval(tick);
+      canClose = true;
+      timerEl.textContent = '可以关闭页面';
+      statusEl.textContent = '学籍接收完成 · 关闭即确认入学';
+      closeBtn.disabled = false;
+      closeBtn.classList.add('visible');
+    }
+  }, 1000);
+
+  function enroll() {
+    if (enrolled) return;
+    enrolled = true;
+    closeBtn.textContent = '确认中…';
+    statusEl.textContent = '入学确认 · 正在跳转';
+    sessionStorage.setItem('ad_passed', '1');
+    localStorage.setItem('ad_passed', '1');
+    setTimeout(function() {
+      window.location.href = 'home.html';
+    }, 500);
+  }
+
+  // 点击关闭 → 入学
+  closeBtn.addEventListener('click', function() {
+    if (!canClose) return;
+    enroll();
+  });
+
+  // 浏览器关闭标签页 → 也算确认入学
+  window.addEventListener('beforeunload', function() {
+    if (canClose) {
       sessionStorage.setItem('ad_passed', '1');
-      setTimeout(() => { window.location.href = 'home.html'; }, 500);
-    });
+      localStorage.setItem('ad_passed', '1');
+    }
+  });
   </script>
 </body>
 </html>
