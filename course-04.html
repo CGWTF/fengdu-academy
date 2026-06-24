@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>禁忌药理学 — 酆都在线学院</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body data-page-id="course-04" data-required-level="0" data-is-hidden="false">
+
+    <div id="app-header"></div>
+    <main class="main-content" id="course-content"></main>
+    <div id="app-footer"></div>
+
+    <script src="js/utils/storage.js"></script>
+    <script src="js/utils/dom.js"></script>
+    <script src="data/index.js"></script>
+    <script src="js/core/game-state.js"></script>
+    <script src="js/core/story-data.js"></script>
+    <script src="js/core/search-engine.js"></script>
+    <script src="js/core/router.js"></script>
+    <script src="js/components/layout.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        GameState.init();
+        StoryData.load();
+        SearchEngine.init(STORY_DATA_PAGES);
+        window._totalPageCount = StoryData.getTotalPageCount();
+        Router.init();
+        renderCourse('C04');
+    });
+
+    function renderCourse(courseId) {
+        var c = StoryData.getCourse(courseId);
+        if (!c) return;
+        Layout.renderHeader(c.title, '选课 > ' + c.title);
+        Layout.renderFooter('06', window._totalPageCount);
+
+        document.getElementById('course-content').innerHTML = `
+            <div class="card">
+                <h2>${c.courseCode} · ${c.title}</h2>
+                <div class="record-card">
+                    <p><strong>授课教师：</strong>${c.instructor}</p>
+                    <p><strong>学　　分：</strong>${c.credits}</p>
+                    <p><strong>上课时间：</strong>${c.schedule}</p>
+                    <p><strong>上课地点：</strong>${c.location}</p>
+                    <p><strong>招生限额：</strong>${c.maxStudents} 人</p>
+                    <p><strong>先修要求：</strong>${c.prerequisites}</p>
+                </div>
+
+                <h3>课程描述</h3>
+                <p>${c.description}</p>
+
+                <h3>注意事项</h3>
+                <div class="record-card" style="border-left-color:var(--danger);">
+                    <p style="text-indent:0;">${c.notes}</p>
+                </div>
+
+                <p style="text-indent:0;color:var(--text-light);font-size:0.85rem;margin-top:16px;">
+                    📌 「<strong>还魂汤</strong>」的完整配方和「<strong>活体提取</strong>」技术是本课程的核心机密。
+                    搜索这些术语可能找到学院的内部实验文档。
+                </p>
+            </div>
+        `;
+    }
+    </script>
+</body>
+</html>

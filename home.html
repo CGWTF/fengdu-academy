@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生系统主页 — 酆都在线学院</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body data-page-id="home" data-required-level="0" data-is-hidden="false">
+
+    <div id="app-header"></div>
+
+    <main class="main-content">
+        <!-- 未注册时显示注册表单 -->
+        <div class="card" id="registration-card">
+            <h2>📝 新生入学登记</h2>
+            <p style="text-indent:0;color:var(--text-light);margin-bottom:20px;">
+                欢迎来到酆都在线学院。请填写以下信息完成入学注册。
+            </p>
+
+            <div class="registration-form">
+                <div class="form-group">
+                    <label>昵称</label>
+                    <input type="text" id="reg-nickname"
+                           placeholder="请输入你的昵称…"
+                           maxlength="12"
+                           autocomplete="off">
+                    <div class="form-hint">你可以自由选择任何昵称。</div>
+                </div>
+                <div class="form-group">
+                    <label>生日</label>
+                    <input type="text" id="reg-birthday"
+                           placeholder="例如：0715 或 19921015"
+                           maxlength="10"
+                           autocomplete="off">
+                    <div class="form-hint">格式：MMDD 或 YYYYMMDD。这将作为你的账号密码，请牢记。</div>
+                </div>
+                <div class="form-group">
+                    <button class="btn-primary" onclick="doRegister()" style="width:100%;">
+                        确认入学
+                    </button>
+                </div>
+                <p id="reg-msg" style="text-align:center;min-height:20px;font-size:0.85rem;color:var(--danger);"></p>
+            </div>
+        </div>
+
+        <!-- 已注册时显示的仪表盘 -->
+        <div class="card" id="dashboard-card" style="display:none;">
+            <h2>📋 学生仪表盘</h2>
+            <p style="text-indent:0;color:var(--success);margin-bottom:16px;">
+                ✅ 欢迎回来，<strong id="dash-name">—</strong>。你已成功入学。
+            </p>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+                <div class="card" style="padding:16px;text-align:center;cursor:pointer;"
+                     onclick="window.location.href='courses.html'">
+                    <div style="font-size:2rem;">📚</div>
+                    <div style="font-weight:bold;">选课中心</div>
+                    <div style="font-size:0.8rem;color:var(--text-light);">浏览课程列表</div>
+                </div>
+                <div class="card" style="padding:16px;text-align:center;cursor:pointer;"
+                     onclick="window.location.href='roster.html'">
+                    <div style="font-size:2rem;">👥</div>
+                    <div style="font-weight:bold;">学生名单</div>
+                    <div style="font-size:0.8rem;color:var(--text-light);">查看同学档案</div>
+                </div>
+            </div>
+
+            <div class="record-card">
+                <div><strong>学籍号：</strong>STU-2025-<span id="dash-id">—</span></div>
+                <div><strong>入学日期：</strong><span id="dash-date">—</span></div>
+                <div><strong>已选课程：</strong><span id="dash-courses">0</span> 门</div>
+                <div><strong>档案状态：</strong><span class="status-active">在读</span></div>
+            </div>
+
+            <p style="text-indent:0;color:var(--text-light);font-size:0.85rem;margin-top:12px;">
+                💡 提示：你可以通过页面顶部的搜索框查找课程相关的档案信息。如果发现什么异常的关键词，试试搜索它。
+            </p>
+        </div>
+    </main>
+
+    <div id="app-footer"></div>
+
+    <script src="js/utils/storage.js"></script>
+    <script src="js/utils/dom.js"></script>
+    <script src="data/index.js"></script>
+    <script src="js/core/game-state.js"></script>
+    <script src="js/core/story-data.js"></script>
+    <script src="js/core/search-engine.js"></script>
+    <script src="js/core/router.js"></script>
+    <script src="js/components/layout.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 检查是否通过广告入口进入，防止直接访问跳过广告陷阱
+        if (!sessionStorage.getItem('ad_passed')) {
+            window.location.href = 'index.html';
+            return;
+        }
+
+        GameState.init();
+        StoryData.load();
+        SearchEngine.init(STORY_DATA_PAGES);
+        window._totalPageCount = StoryData.getTotalPageCount();
+        Router.init();
+
+        const state = GameState.getState();
+
+        // 如果已经注册过，直接显示仪表盘
+        if (state.playerName && state.playerBirthday) {
+            showDashboard();
+        }
+
+        // 检查 URL 参数
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('error') === 'permission') {
+            alert('⚠️ 你当前的账号权限不足，无法访问该页面。\n\n请尝试通过「账号切换」登录更高权限的账号。');
+        }
+
+        Layout.renderHeader('学生系统主页');
+        Layout.renderFooter('00', window._totalPageCount || 15);
+    });
+
+    function doRegister() {
+        const name = document.getElementById('reg-nickname').value.trim();
+        const birthday = document.getElementById('reg-birthday').value.trim();
+        const msg = document.getElementById('reg-msg');
+
+        if (!name || name.length < 1 || name.length > 12) {
+            msg.textContent = '请输入昵称（1-12个字符）';
+            return;
+        }
+
+        if (!birthday) {
+            msg.textContent = '请输入生日（MMDD 或 YYYYMMDD 格式）';
+            return;
+        }
+
+        // 校验格式
+        if (!/^\d{4,8}$/.test(birthday)) {
+            msg.textContent = '生日格式不正确，请输入 MMDD 或 YYYYMMDD 格式的数字';
+            return;
+        }
+
+        if (birthday.length !== 4 && birthday.length !== 8) {
+            msg.textContent = '请输入4位（MMDD）或8位（YYYYMMDD）生日';
+            return;
+        }
+
+        // 保存
+        GameState.setPlayer(name, birthday);
+        msg.style.color = 'var(--success)';
+        msg.textContent = '✅ 注册成功！正在进入系统…';
+
+        setTimeout(function() {
+            showDashboard();
+        }, 600);
+    }
+
+    function showDashboard() {
+        const state = GameState.getState();
+        document.getElementById('registration-card').style.display = 'none';
+        document.getElementById('dashboard-card').style.display = 'block';
+
+        document.getElementById('dash-name').textContent = state.playerName;
+        document.getElementById('dash-id').textContent =
+            'STU-' + new Date().getFullYear() + '-' +
+            Math.floor(Math.random() * 9000 + 1000);
+        document.getElementById('dash-date').textContent =
+            new Date().toLocaleDateString('zh-CN');
+        document.getElementById('dash-courses').textContent = '6';
+
+        Layout.renderHeader('学生系统主页');
+    }
+    </script>
+</body>
+</html>

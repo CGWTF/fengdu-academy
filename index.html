@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精彩短视频 — 正在播放</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body data-page-id="index" data-required-level="0" data-is-hidden="false" style="background:#000;">
+
+    <div class="video-ad-container">
+        <div class="video-ad-screen" id="ad-screen">
+            <div class="video-ad-timer" id="ad-timer">广告 10秒</div>
+            <div class="video-ad-close" id="ad-close" onclick="handleClose()">✕</div>
+
+            <!-- 模拟视频内容 -->
+            <div style="text-align:center;padding:20px;" id="ad-content">
+                <div style="font-size:3rem;margin-bottom:12px;">🎓</div>
+                <div style="font-size:1.3rem;font-weight:bold;margin-bottom:8px;">
+                    酆都在线学院
+                </div>
+                <div style="font-size:0.9rem;color:#aaa;margin-bottom:16px;">
+                    2025年度 · 免费入学测试
+                </div>
+                <div style="font-size:0.8rem;color:#ccc;line-height:1.8;">
+                    你被选中了<br>
+                    100%录取率<br>
+                    不限学历 · 不限年龄<br>
+                    完成测试即可入学
+                </div>
+                <div style="margin-top:20px;font-size:0.75rem;color:#888;">
+                    ⚠️ 正在播放广告 · 请勿关闭
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align:center;color:#666;padding:16px;font-size:0.8rem;">
+        <a href="home.html" style="color:#444;text-decoration:underline;">直接进入学院系统</a>
+        <span style="margin:0 8px;">|</span>
+        <span>仅限已录取学生</span>
+    </div>
+
+    <script>
+    let countdown = 10;
+    let timerInterval = null;
+
+    function startTimer() {
+        const timerEl = document.getElementById('ad-timer');
+        const closeBtn = document.getElementById('ad-close');
+        const adContent = document.getElementById('ad-content');
+
+        timerInterval = setInterval(function() {
+            countdown--;
+            timerEl.textContent = '广告 ' + countdown + '秒';
+
+            if (countdown <= 0) {
+                clearInterval(timerInterval);
+                timerEl.textContent = '即将跳转…';
+                closeBtn.classList.add('visible');
+
+                // 更新广告文案为入学确认
+                adContent.innerHTML = `
+                    <div style="font-size:2rem;margin-bottom:12px;">📋</div>
+                    <div style="font-size:1.3rem;font-weight:bold;margin-bottom:8px;color:#fff;">
+                        恭喜你完成测试
+                    </div>
+                    <div style="font-size:0.9rem;color:#ccc;margin-bottom:12px;">
+                        点击右上角确认入学 →
+                    </div>
+                    <div style="font-size:0.75rem;color:#888;">
+                        酆都在线学院 · 期待你的加入
+                    </div>
+                `;
+            }
+        }, 1000);
+    }
+
+    function handleClose() {
+        if (countdown > 0) {
+            // 倒计时未结束，不能关闭
+            return;
+        }
+        // 标记已通过广告，防止直接访问 home.html 跳过入口
+        sessionStorage.setItem('ad_passed', '1');
+        window.location.href = 'home.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', startTimer);
+    </script>
+</body>
+</html>

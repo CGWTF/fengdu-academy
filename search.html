@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索结果 — 酆都在线学院</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body data-page-id="search" data-required-level="0" data-is-hidden="false">
+
+    <div id="app-header"></div>
+
+    <main class="main-content">
+        <div id="search-result-area"></div>
+    </main>
+
+    <div id="app-footer"></div>
+
+    <script src="js/utils/storage.js"></script>
+    <script src="js/utils/dom.js"></script>
+    <script src="data/index.js"></script>
+    <script src="js/core/game-state.js"></script>
+    <script src="js/core/story-data.js"></script>
+    <script src="js/core/search-engine.js"></script>
+    <script src="js/core/router.js"></script>
+    <script src="js/components/layout.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        GameState.init();
+        StoryData.load();
+        SearchEngine.init(STORY_DATA_PAGES);
+        window._totalPageCount = StoryData.getTotalPageCount();
+
+        Layout.renderHeader('档案搜索');
+        Layout.renderFooter('—', window._totalPageCount);
+
+        var params = new URLSearchParams(window.location.search);
+        var q = params.get('q') || '';
+        var blocked = params.get('blocked');
+        var requiredLevel = params.get('level');
+
+        var area = document.getElementById('search-result-area');
+
+        if (blocked === '1') {
+            // 权限不足
+            area.innerHTML = `
+                <div class="card permission-denied">
+                    <div class="icon">🔒</div>
+                    <h3>权限不足</h3>
+                    <p>关键词「<strong>${escapeHtml(q)}</strong>」对应的档案需要 <strong>Lv${requiredLevel}</strong> 权限。</p>
+                    <p style="color:var(--text-light);font-size:0.9rem;">
+                        你当前的权限等级为 Lv${GameState.getState().level}。
+                        该档案确实存在，但需要更高权限的账号才能查看。
+                    </p>
+                    <p style="margin-top:12px;">
+                        <button class="btn-primary" onclick="Layout.showAccountModal()">
+                            🔐 切换账号
+                        </button>
+                    </p>
+                </div>
+            `;
+        } else if (q) {
+            // 无搜索结果
+            area.innerHTML = `
+                <div class="card search-empty">
+                    <div class="icon">📭</div>
+                    <h3>未找到相关档案</h3>
+                    <p>关键词「<strong>${escapeHtml(q)}</strong>」没有匹配到任何档案。</p>
+                    <p style="color:var(--text-light);font-size:0.9rem;">
+                        试试在课程介绍和名单页中寻找可疑的关键词。
+                        也可以尝试其他相关的词语。
+                    </p>
+                </div>
+            `;
+        } else if (window.location.search.includes('locked')) {
+            // 隐藏页面未发现
+            area.innerHTML = `
+                <div class="card permission-denied" style="border-color:#e67e22;color:#e67e22;">
+                    <div class="icon">🔒</div>
+                    <h3>档案未解锁</h3>
+                    <p>该档案需要通过搜索正确的关键词来解锁。</p>
+                    <p style="color:var(--text-light);font-size:0.9rem;">
+                        在课程的描述文字中寻找可疑的词语，然后使用页面顶部的搜索框进行搜索。
+                    </p>
+                </div>
+            `;
+        } else {
+            // 直接访问 search.html 无参数
+            area.innerHTML = `
+                <div class="card search-empty">
+                    <div class="icon">🔍</div>
+                    <h3>档案搜索</h3>
+                    <p>请使用页面顶部的搜索框输入关键词。</p>
+                    <p style="color:var(--text-light);font-size:0.9rem;">
+                        搜索支持中文、数字和英文字母，长度2-24个字符。
+                    </p>
+                </div>
+            `;
+        }
+    });
+
+    function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+    </script>
+</body>
+</html>

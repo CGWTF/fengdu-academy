@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选课列表 — 酆都在线学院</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body data-page-id="courses" data-required-level="0" data-is-hidden="false">
+
+    <div id="app-header"></div>
+
+    <main class="main-content">
+        <div class="card">
+            <h2>📚 2025年度可选课程</h2>
+            <p style="text-indent:0;color:var(--text-light);margin-bottom:16px;">
+                以下为本学期开设的全部课程。请仔细阅读课程介绍后选课。每名学生至少选修4门。
+            </p>
+        </div>
+
+        <div id="course-list"></div>
+    </main>
+
+    <div id="app-footer"></div>
+
+    <script src="js/utils/storage.js"></script>
+    <script src="js/utils/dom.js"></script>
+    <script src="data/index.js"></script>
+    <script src="js/core/game-state.js"></script>
+    <script src="js/core/story-data.js"></script>
+    <script src="js/core/search-engine.js"></script>
+    <script src="js/core/router.js"></script>
+    <script src="js/components/layout.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        GameState.init();
+        StoryData.load();
+        SearchEngine.init(STORY_DATA_PAGES);
+        window._totalPageCount = StoryData.getTotalPageCount();
+        Router.init();
+
+        Layout.renderHeader('选课列表');
+        Layout.renderFooter('01', window._totalPageCount);
+
+        renderCourseList();
+    });
+
+    function renderCourseList() {
+        const container = document.getElementById('course-list');
+        const courses = StoryData.getCourseList();
+
+        let html = '';
+        courses.forEach(function(c) {
+            html += `
+                <div class="card" style="cursor:pointer;transition:box-shadow 0.2s;"
+                     onclick="window.location.href='course-${c.id.slice(1)}.html'"
+                     onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'"
+                     onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
+                    <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+                        <div>
+                            <h3 style="margin:0 0 4px 0;color:var(--accent);border:none;padding:0;">
+                                ${c.id} · ${c.title}
+                            </h3>
+                            <span style="font-size:0.8rem;color:var(--text-light);">
+                                课程编号：${c.courseCode} | 授课：${c.instructor} | 学分：${c.credits}
+                            </span>
+                        </div>
+                        <span style="background:var(--header-bg);color:#e0d5c5;padding:3px 10px;border-radius:3px;font-size:0.75rem;white-space:nowrap;">
+                            限额 ${c.maxStudents} 人
+                        </span>
+                    </div>
+                    <p style="margin-top:10px;text-indent:0;font-size:0.9rem;color:var(--text);">
+                        ${c.description.slice(0, 80)}…
+                    </p>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+    </script>
+</body>
+</html>

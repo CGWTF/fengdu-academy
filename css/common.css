@@ -1,0 +1,621 @@
+/* 共享样式 — 餐厅网站主题 */
+
+:root {
+  --bg: #f5f0e8;
+  --header-bg: #2c2416;
+  --header-text: #f0e6d3;
+  --card-bg: #fff;
+  --text: #3d3226;
+  --text-light: #7a6e5e;
+  --accent: #8b4513;
+  --accent-hover: #a0522d;
+  --border: #d4c5b2;
+  --danger: #c0392b;
+  --success: #27ae60;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --radius: 6px;
+  --max-width: 800px;
+}
+
+body {
+  font-family: "Noto Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 顶部导航 */
+.site-header {
+  background: var(--header-bg);
+  color: var(--header-text);
+  padding: 16px 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+
+.site-header .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.site-header .subtitle {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+/* 导航栏 */
+.site-nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 10px 0;
+  margin-top: 6px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.site-nav a {
+  color: var(--header-text);
+  font-size: 0.9rem;
+  padding: 4px 12px;
+  border-radius: 3px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.site-nav a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* 搜索栏 */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  padding: 14px 20px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  gap: 8px;
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 16px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  background: #fdfcf9;
+  transition: border-color 0.2s;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.search-bar button:hover {
+  background: var(--accent-hover);
+}
+
+/* 主内容区 */
+.main-content {
+  flex: 1;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* 卡片 */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 24px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  color: var(--accent);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 16px 0 8px;
+}
+
+.card p {
+  text-indent: 2em;
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+
+.card ul, .card ol {
+  padding-left: 2em;
+  margin-bottom: 10px;
+}
+
+.card li {
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+
+/* 强调文字 */
+.emphasized {
+  font-weight: bold;
+  color: var(--danger);
+}
+
+.highlight {
+  background: #fff3cd;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+/* 图片区域 */
+.image-area {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.image-area img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* 页脚 */
+.site-footer {
+  background: #3d3226;
+  color: #c4b8a8;
+  text-align: center;
+  padding: 12px 20px;
+  font-size: 0.85rem;
+}
+
+.site-footer .page-indicator {
+  font-weight: bold;
+  color: #e0d5c5;
+}
+
+/* 搜索无结果 */
+.search-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-light);
+}
+
+.search-empty .icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+/* 通知条 */
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+}
+
+.toast.success {
+  background: var(--success);
+}
+
+.toast.warning {
+  background: #e67e22;
+}
+
+/* 页面标题栏 */
+.page-title-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-title {
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.page-breadcrumb {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+/* 权限等级徽章 */
+.level-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 1px 6px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.nav-admin {
+  opacity: 0.6;
+}
+
+/* 页脚 */
+.footer-content {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-divider {
+  color: #6b5e4e;
+}
+
+/* 弹窗 */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 28px 24px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+.modal-box h3 {
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.modal-info {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  background: #fdfcf9;
+  border-radius: 4px;
+}
+
+.modal-field {
+  margin-bottom: 12px;
+}
+
+.modal-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.modal-field input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.modal-field input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.modal-hint {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  min-height: 20px;
+  margin-bottom: 12px;
+}
+
+.modal-hint.success {
+  color: var(--success);
+}
+
+.modal-hint.error {
+  color: var(--danger);
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn-primary {
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-secondary {
+  padding: 10px 20px;
+  background: #e0d5c5;
+  color: var(--text);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.btn-secondary:hover {
+  background: #d4c5b2;
+}
+
+/* 档案风格卡片 */
+.record-card {
+  background: #fdfcf9;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  font-family: "Courier New", "SimSun", monospace;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.record-card .stamp {
+  display: inline-block;
+  border: 2px solid var(--danger);
+  color: var(--danger);
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transform: rotate(-5deg);
+  opacity: 0.8;
+}
+
+/* 实验记录专用 */
+.exp-log {
+  background: #1a1a1a;
+  color: #0f0;
+  font-family: "Courier New", monospace;
+  padding: 20px 24px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  margin-bottom: 16px;
+}
+
+.exp-log .timestamp {
+  color: #888;
+}
+
+.exp-log .warning {
+  color: #ff4444;
+}
+
+/* 表格 */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.data-table th {
+  background: #3d3226;
+  color: #e0d5c5;
+  font-weight: bold;
+}
+
+.data-table tr:nth-child(even) td {
+  background: #fdfcf9;
+}
+
+.data-table .status-active {
+  color: var(--success);
+}
+
+.data-table .status-graduated {
+  color: var(--danger);
+}
+
+.data-table .status-experiment {
+  color: #e67e22;
+}
+
+/* 权限不足提示 */
+.permission-denied {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--danger);
+  border: 2px dashed var(--danger);
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.permission-denied .icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+/* 视频广告页专用 */
+.video-ad-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+.video-ad-screen {
+  aspect-ratio: 9/16;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: relative;
+}
+
+.video-ad-timer {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.video-ad-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.1rem;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.video-ad-close.visible {
+  opacity: 1;
+}
+
+/* 首页注册表单 */
+.registration-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.registration-form .form-group {
+  margin-bottom: 16px;
+}
+
+.registration-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.registration-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  background: #fdfcf9;
+}
+
+.registration-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.registration-form .form-hint {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .site-nav {
+    gap: 12px;
+  }
+  .card {
+    padding: 18px 14px;
+  }
+  .main-content {
+    padding: 16px 12px;
+  }
+  .search-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .search-bar input {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .site-header .logo {
+    font-size: 1.3rem;
+  }
+}

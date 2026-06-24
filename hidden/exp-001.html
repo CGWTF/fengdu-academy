@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实验记录 #001 — 酆都在线学院</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body data-page-id="exp-001" data-required-level="1" data-is-hidden="true">
+
+    <div id="app-header"></div>
+
+    <main class="main-content">
+        <div class="card">
+            <h2>🧪 实验记录 #001 — 不死术与断头再生实验</h2>
+            <div class="stamp" style="margin-bottom:16px;">Lv1 机密</div>
+
+            <div class="exp-log">
+<span class="timestamp">[2024-04-12 23:15]</span> 实验编号：EXP-2024-0412
+<span class="timestamp">[2024-04-12 23:15]</span> 实验名称：不死术·第三次人体断头再生
+<span class="timestamp">[2024-04-12 23:15]</span> 实验对象：STU-2024-019（周远）
+<span class="timestamp">[2024-04-12 23:15]</span> 缝合材料：学院专利再生缝合线 v3.2
+<span class="timestamp">[2024-04-12 23:16]</span> 操作：完成颈部组织分离。
+<span class="timestamp">[2024-04-12 23:16]</span> 操作：脊柱在C3-C4位置截断。实验对象保持意识清醒。
+<span class="timestamp">[2024-04-12 23:17]</span> 操作：缝合开始。计时器启动。
+<span class="timestamp">[2024-04-12 23:17]</span> 缝合完成时间：28秒。在30秒窗口内。
+<span class="timestamp">[2024-04-12 23:18]</span> 观察：血液循环恢复。神经信号重连进行中。
+<span class="timestamp">[2024-04-12 23:25]</span> 观察：实验对象恢复自主呼吸。实验成功。
+<span class="timestamp">[2024-04-13 08:00]</span> 观察：实验对象正常苏醒，无记忆缺损。结业评估通过。
+<span class="timestamp warning">[2024-04-13 08:05]</span> 备注：本批缝合线在第四次实验中出现了组织排斥反应。
+<span class="timestamp warning">[2024-04-13 08:05]</span> 建议：提高供体筛选标准，仅保留A级匹配对象。
+            </div>
+
+            <div class="record-card" style="border-left-color:var(--danger);">
+                <p style="text-indent:0;"><strong>⚠️ 关联发现：</strong></p>
+                <p style="text-indent:0;">实验对象周远的名单状态为「已结业」，但实际参与了多次断头再生实验。
+                「结业」的真实含义可能与学生的离校去向有关。</p>
+            </div>
+
+            <p style="text-indent:0;color:var(--text-light);font-size:0.85rem;margin-top:8px;">
+                📌 记录中提到「供体筛选」和「A级匹配」。搜索「供体筛选」可查看完整的筛选标准与学生档案库。
+            </p>
+        </div>
+    </main>
+
+    <div id="app-footer"></div>
+
+    <script src="../js/utils/storage.js"></script>
+    <script src="../js/utils/dom.js"></script>
+    <script src="../data/index.js"></script>
+    <script src="../js/core/game-state.js"></script>
+    <script src="../js/core/story-data.js"></script>
+    <script src="../js/core/search-engine.js"></script>
+    <script src="../js/core/router.js"></script>
+    <script src="../js/components/layout.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        GameState.init();
+        StoryData.load();
+        SearchEngine.init(STORY_DATA_PAGES);
+        window._totalPageCount = StoryData.getTotalPageCount();
+        Router.init();
+        Layout.renderHeader('实验记录 #001', '隐藏档案 > 实验记录');
+        Layout.renderFooter('10', window._totalPageCount);
+    });
+    </script>
+</body>
+</html>
