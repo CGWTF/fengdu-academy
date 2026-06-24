@@ -1,66 +1,54 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>账号登录 - 酆都在线学院</title>
-  <link rel="stylesheet" href="css/reset.css?v=20260624-student-records">
-  <link rel="stylesheet" href="css/common.css?v=20260624-student-records">
-</head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>账号登录 — 酆都在线学院</title><link rel="stylesheet" href="css/reset.css?v=20260625"><link rel="stylesheet" href="css/common.css?v=20260625"></head>
 <body data-page-id="login" data-required-level="0" data-is-hidden="false">
-  <div id="app-header"></div>
-  <main class="main-content">
-    <section class="card login-panel">
-      <h2>切换账号</h2>
-      <p class="muted">账号控制台。账号 ID 与凭据需同时匹配。</p>
-      <div class="form-group">
-        <label for="username">账号 ID</label>
-        <input id="username" autocomplete="off" placeholder="例如 chen-yutong">
-      </div>
-      <div class="form-group">
-        <label for="password">凭据</label>
-        <input id="password" autocomplete="off">
-      </div>
-      <button class="btn-primary" id="loginBtn">切换账号</button>
-      <p id="loginMsg" class="modal-hint"></p>
-    </section>
-  </main>
-  <div id="app-footer"></div>
-  <script src="js/utils/storage.js?v=20260624-student-records"></script>
-  <script src="data/index.js?v=20260624-student-records"></script>
-  <script src="js/core/game-state.js?v=20260624-student-records"></script>
-  <script src="js/core/story-data.js?v=20260624-student-records"></script>
-  <script src="js/core/search-engine.js?v=20260624-student-records"></script>
-  <script src="js/utils/crypto.js?v=20260624-student-records"></script><script src="js/core/account-manager.js?v=20260624-student-records"></script>
-  <script src="js/core/router.js?v=20260624-student-records"></script>
-  <script src="js/components/layout.js?v=20260624-student-records"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      Layout.init('账号登录');
-      const params = new URLSearchParams(location.search);
-      if (params.get('reason') === 'level') {
-        const msg = document.getElementById('loginMsg');
-        msg.textContent = '该页面需要更高权限。请切换到已发现的账号。';
-        msg.className = 'modal-hint error';
-      }
-    });
-    document.getElementById('loginBtn').addEventListener('click', async () => {
-      const msg = document.getElementById('loginMsg');
-      const result = await AccountManager.login(
-        document.getElementById('username').value,
-        document.getElementById('password').value
-      );
-      if (!result.ok) {
-        msg.textContent = result.reason;
-        msg.className = 'modal-hint error';
-        return;
-      }
-      msg.textContent = result.account.level >= 4
-        ? `已登录 ${result.account.displayName}，管理层权限 Lv${result.account.level}`
-        : `已登录 ${result.account.displayName}`;
-      msg.className = 'modal-hint success';
-      setTimeout(() => { window.location.href = 'home.html'; }, 700);
-    });
-  </script>
-</body>
-</html>
+<div id="app-header"></div>
+<main class="main-content">
+<section class="card login-panel">
+<h2>账号切换</h2>
+<p class="muted">输入在课程讨论区等处发现的账号 ID，以及对应的 8 位生日密码。</p>
+<div class="form-group">
+<label for="username">账号 ID</label>
+<input id="username" autocomplete="off" placeholder="例如：cytong2025" maxlength="20">
+</div>
+<div class="form-group">
+<label for="password">密码（生日 YYYYMMDD）</label>
+<input id="password" autocomplete="off" placeholder="例如：20010715" maxlength="8" inputmode="numeric" pattern="[0-9]{8}">
+</div>
+<button class="btn-primary" id="loginBtn">切换账号</button>
+<p id="loginMsg" class="modal-hint"></p>
+</section></main>
+<div id="app-footer"></div>
+<script src="js/utils/storage.js?v=20260625"></script><script src="data/index.js?v=20260625"></script><script src="js/core/game-state.js?v=20260625"></script><script src="js/core/story-data.js?v=20260625"></script><script src="js/core/search-engine.js?v=20260625"></script><script src="js/utils/crypto.js?v=20260625"></script><script src="js/core/account-manager.js?v=20260625"></script><script src="js/core/router.js?v=20260625"></script><script src="js/components/layout.js?v=20260625"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  Layout.init('账号登录');
+  var p=new URLSearchParams(location.search);
+  if(p.get('reason')==='level'){
+    document.getElementById('loginMsg').textContent='该页面需要更高权限。请切换到已发现的账号。';
+    document.getElementById('loginMsg').className='modal-hint error';
+  }
+});
+document.getElementById('loginBtn').addEventListener('click',()=>{
+  var msg=document.getElementById('loginMsg');
+  var pw=document.getElementById('password').value.trim();
+  if(!/^\d{8}$/.test(pw)){
+    msg.textContent='密码需为 8 位数字（YYYYMMDD 生日格式）。';
+    msg.className='modal-hint error';
+    return;
+  }
+  var result=AccountManager.login(
+    document.getElementById('username').value,
+    pw
+  );
+  if(!result.ok){
+    msg.textContent=result.reason;
+    msg.className='modal-hint error';
+    return;
+  }
+  msg.textContent='已登录 '+result.account.displayName+'（Lv'+result.account.level+'）';
+  msg.className='modal-hint success';
+  setTimeout(function(){window.location.href='home.html';},700);
+});
+</script>
+</body></html>

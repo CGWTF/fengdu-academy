@@ -83,13 +83,13 @@ window.STORY_DATA_ACCOUNTS = {
   'chen-yutong': {
     id: 'chen-yutong', username: 'cytong2025', displayName: '陈雨桐',
     role: 'student', level: 1,
-    passwordHash: '986162058ab6bb0966a92ee16aa1adf3',
+    passwordHash: 'bfa67ff936d51d1728e7b419f1809bd3',
     hintPageIds: ['student-chen-yutong']
   },
   'lin-mo': {
     id: 'lin-mo', username: 'linmo_mo', displayName: '林墨',
     role: 'student', level: 2,
-    passwordHash: '5167aca0cc67fe216140fd438eb906e3',
+    passwordHash: '908ef0cfc6c5e96f5aec5779d9fe7cad',
     hintPageIds: ['student-lin-mo']
   },
   'zhao-siqi': {
@@ -101,7 +101,7 @@ window.STORY_DATA_ACCOUNTS = {
   'zhong-prof': {
     id: 'zhong-prof', username: 'zhong_prof', displayName: '钟教授',
     role: 'teacher', level: 4,
-    passwordHash: 'e3a958df39563a3bc9cbc53fc79dee52',
+    passwordHash: '36f6274ea1cc9b8beb9a11424928f460',
     hintPageIds: ['teacher-zhong-prof']
   },
   'lu-xiaoji': {
@@ -131,10 +131,10 @@ window.STORY_DATA_PEOPLE = {
 };
 
 window.STORY_DATA_CLUES = {
-  'chen-date': { id: 'chen-date', pageId: 'student-chen-yutong', label: '陈雨桐生日', reveals: '0715' },
-  'lin-date': { id: 'lin-date', pageId: 'student-lin-mo', label: '林墨门禁', reveals: '0426' },
+  'chen-date': { id: 'chen-date', pageId: 'student-chen-yutong', label: '陈雨桐生日', reveals: '20010715' },
+  'lin-date': { id: 'lin-date', pageId: 'student-lin-mo', label: '林墨门禁', reveals: '20010426' },
   'zhao-date': { id: 'zhao-date', pageId: 'student-zhao-siqi', label: '赵思琪密码提示', reveals: 'BBS+课件' },
-  'zhong-date': { id: 'zhong-date', pageId: 'teacher-zhong-prof', label: '钟教授生日', reveals: '0311' },
+  'zhong-date': { id: 'zhong-date', pageId: 'teacher-zhong-prof', label: '钟教授生日', reveals: '19750311' },
   'lxj-year': { id: 'lxj-year', pageId: 'supply', label: '陆晓济年份', reveals: '1992' },
   'lxj-month': { id: 'lxj-month', pageId: 'notice', label: '陆晓济月份', reveals: '10' },
   'lxj-day': { id: 'lxj-day', pageId: 'map', label: '陆晓济日期', reveals: '15' },
