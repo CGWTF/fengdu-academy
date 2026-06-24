@@ -5,11 +5,11 @@
   <div id="app-header"></div>
   <main class="main-content">
     <section class="card">
-      <h2>搜索结果</h2>
+      <h2>检索结果</h2>
       <div id="result-box"></div>
     </section>
     <section class="card">
-      <h2>已搜索词条记录</h2>
+      <h2>检索记录</h2>
       <div id="search-history"></div>
     </section>
   </main>
@@ -23,17 +23,17 @@
       const type = params.get('type');
       const box = document.getElementById('result-box');
       if (params.get('locked')) {
-        box.innerHTML = '<div class="permission-denied">该隐藏档案尚未被发现。请先通过搜索或剧情线索解锁。</div>';
+        box.innerHTML = '<div class="permission-denied">档案索引未开放。</div>';
       } else if (!q) {
         box.innerHTML = '<p class="muted">输入人名、课程术语或档案词条开始搜索。</p>';
       } else if (type === 'blocked') {
         box.innerHTML = `<div class="permission-denied">你搜索了“${Layout.escape(q)}”，但该档案需要 Lv${params.get('required')} 权限。</div>`;
       } else if (type === 'fuzzy') {
-        box.innerHTML = `<p>“${Layout.escape(q)}”存在相关词条，但可能需要更完整的表述或更高权限。</p>`;
+        box.innerHTML = `<p>“${Layout.escape(q)}”存在近似记录。</p>`;
       } else if (type === 'none') {
-        box.innerHTML = `<p>没有找到“${Layout.escape(q)}”的公开结果。系统仍然记录了这次查询。</p>`;
+        box.innerHTML = `<p>“${Layout.escape(q)}”未匹配公开索引。</p>`;
       } else {
-        box.innerHTML = '<p class="muted">搜索结果已打开，或该词条被记录。</p>';
+        box.innerHTML = '<p class="muted">检索完成。</p>';
       }
       Layout.renderSearchHistory('search-history');
     });

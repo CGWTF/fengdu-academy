@@ -12,16 +12,16 @@
   <main class="main-content">
     <section class="card" id="register-card">
       <h2>新生入学认证</h2>
-      <p class="muted">系统显示你已经被预录取。完成认证后，你可以查看课程、学生名单和退学流程。</p>
+      <p class="muted">系统显示你已经被预录取。请补全缺失字段以完成学籍写入。</p>
       <div class="login-panel">
         <div class="form-group">
           <label for="playerName">昵称</label>
           <input id="playerName" maxlength="12" autocomplete="off">
         </div>
         <div class="form-group">
-          <label for="playerBirthday">自设生日密码</label>
+          <label for="playerBirthday">出生日期</label>
           <input id="playerBirthday" maxlength="8" autocomplete="off" placeholder="MMDD 或 YYYYMMDD">
-          <p class="muted">这是你的新生账号密码。系统说它只用于身份确认。</p>
+          <p class="muted">用于学籍校验。提交后不可在公开页面修改。</p>
         </div>
         <button class="btn-primary" id="registerBtn">确认入学</button>
         <p id="registerMsg" class="modal-hint"></p>
@@ -29,18 +29,18 @@
     </section>
 
     <section class="card" id="dashboard-card" style="display:none;">
-      <h2>当前目标：找到退学入口</h2>
-      <p class="muted">欢迎回来，<span id="dashName"></span>。主页的退学按钮始终显示维护中，你需要从课程、学生名单和搜索记录里弄清自己为什么被录取。</p>
+      <h2>学生系统</h2>
+      <p class="muted">欢迎回来，<span id="dashName"></span>。你的学籍状态显示为“观察期”。</p>
       <div class="action-grid">
-        <a class="action-card" href="courses.html"><strong>课程中心</strong><br><span class="muted">查看异常课程描述</span></a>
-        <a class="action-card" href="students.html"><strong>学生名单</strong><br><span class="muted">从人物主页调查陈雨桐</span></a>
-        <a class="action-card" href="search.html?q=退学"><strong>退学入口</strong><br><span class="muted">系统会记录你的尝试</span></a>
-        <a class="action-card" href="login.html"><strong>已有账号登录</strong><br><span class="muted">切换到你找到的账号</span></a>
+        <a class="action-card" href="courses.html"><strong>课程中心</strong><br><span class="muted">6 门课程可选</span></a>
+        <a class="action-card" href="students.html"><strong>学生名单</strong><br><span class="muted">2025 级学籍总览</span></a>
+        <a class="action-card" href="search.html?q=退学"><strong>退学申请</strong><br><span class="muted">状态：维护中</span></a>
+        <a class="action-card" href="login.html"><strong>统一身份认证</strong><br><span class="muted">账号切换</span></a>
       </div>
     </section>
 
     <section class="card">
-      <h2>搜索记录</h2>
+      <h2>检索记录</h2>
       <div id="home-history"></div>
     </section>
   </main>
@@ -71,7 +71,7 @@
       const birthday = document.getElementById('playerBirthday').value.trim();
       const msg = document.getElementById('registerMsg');
       if (!name || !/^\d{4}$|^\d{8}$/.test(birthday)) {
-        msg.textContent = '请填写昵称，并输入 4 位或 8 位生日密码。';
+        msg.textContent = '请填写昵称，并输入 4 位或 8 位日期。';
         msg.className = 'modal-hint error';
         return;
       }

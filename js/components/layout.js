@@ -28,7 +28,7 @@ const Layout = {
     header.innerHTML = `
       <header class="site-header">
         <div class="logo">酆都在线学院</div>
-        <div class="subtitle">学生管理系统 v3.7.1 · 当前目标：找到退学入口</div>
+        <div class="subtitle">学生管理系统 v3.7.1</div>
         <nav class="site-nav">
           <a href="${base}home.html">主页</a>
           <a href="${base}courses.html">课程</a>
@@ -40,8 +40,8 @@ const Layout = {
         </nav>
       </header>
       <form class="search-bar" id="global-search-form">
-        <input type="text" id="search-input" placeholder="搜索人名、课程、档案词条" maxlength="24" autocomplete="off">
-        <button type="submit">搜索</button>
+        <input type="text" id="search-input" placeholder="档案检索" maxlength="24" autocomplete="off">
+        <button type="submit">检索</button>
       </form>
       ${pageTitle ? `<div class="page-title-bar"><span class="page-title">${this.escape(pageTitle)}</span>${breadcrumb ? `<span class="page-breadcrumb">${this.escape(breadcrumb)}</span>` : ''}</div>` : ''}
     `;
@@ -64,7 +64,7 @@ const Layout = {
         <div class="footer-content">
           <span>已发现 ${summary.foundCount}/${summary.totalPages || '-'} 个页面</span>
           <span class="footer-divider">|</span>
-          <span>搜索记录 ${summary.searches} 条</span>
+          <span>检索记录 ${summary.searches} 条</span>
           <span class="footer-divider">|</span>
           <span>内部系统，请勿外传</span>
         </div>
@@ -138,9 +138,9 @@ const Layout = {
 
   labelResult(type) {
     return ({
-      exact: '精确命中',
-      'fuzzy-open': '模糊命中',
-      fuzzy: '相关结果',
+      exact: '已打开',
+      'fuzzy-open': '已打开',
+      fuzzy: '近似记录',
       blocked: '权限不足',
       none: '无结果',
       invalid: '格式无效'

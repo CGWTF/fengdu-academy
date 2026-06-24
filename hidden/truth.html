@@ -44,7 +44,7 @@
       const history = s.searchHistory.slice(-6).map(item => item.keyword).join(' / ') || '无';
       const profile = `
         访问者昵称：${Layout.escape(s.playerName || '未登记')}<br>
-        自设生日密码：${Layout.escape(s.playerBirthday || '未登记')}<br>
+        你提交过的日期：${Layout.escape(s.playerBirthday || '未登记')}<br>
         账号路径：${s.accountsUsed.map(a => Layout.escape(a)).join(' -> ')}<br>
         搜索倾向：${Layout.escape(history)}<br>
         浏览器：${Layout.escape(navigator.userAgent)}<br>

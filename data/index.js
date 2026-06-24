@@ -78,7 +78,7 @@ window.STORY_DATA_COURSES = {
     url: 'course-06.html',
     title: '记忆转移实操',
     instructor: '钟教授',
-    description: '意识上传与宿主替换。维护人记录里出现过 lu-xiaoji。',
+    description: '意识上传与宿主替换。维护签名：lu-xiaoji。',
     keywords: ['宿主替换', '陆晓济']
   }
 };
@@ -148,17 +148,17 @@ window.STORY_DATA_PEOPLE = {
     publicStatus: '课程维护人',
     privateStatus: '实验负责人',
     profilePage: 'teacher/lu-xiaoji.html',
-    recent: '教师账号使用临时生日密码'
+    recent: '认证策略：DATE8'
   }
 };
 
 window.STORY_DATA_CLUES = {
-  'chen-date': { id: 'chen-date', pageId: 'student-chen-yutong', label: '陈雨桐日期线索', reveals: '0715' },
-  'lin-date': { id: 'lin-date', pageId: 'student-lin-mo', label: '林墨门禁线索', reveals: '0426' },
+  'chen-date': { id: 'chen-date', pageId: 'student-chen-yutong', label: '陈雨桐日期记录', reveals: '0715' },
+  'lin-date': { id: 'lin-date', pageId: 'student-lin-mo', label: '林墨门禁记录', reveals: '0426' },
   'lxj-year': { id: 'lxj-year', pageId: 'supply', label: '陆晓济年份', reveals: '1992' },
   'lxj-month': { id: 'lxj-month', pageId: 'notice', label: '陆晓济月份', reveals: '10' },
   'lxj-day': { id: 'lxj-day', pageId: 'map', label: '陆晓济日期', reveals: '15' },
-  'lxj-format': { id: 'lxj-format', pageId: 'archive', label: '教师密码格式', reveals: 'YYYYMMDD' }
+  'lxj-format': { id: 'lxj-format', pageId: 'archive', label: '教师认证策略', reveals: 'DATE8' }
 };
 
 window.STORY_DATA_SEARCH_INDEX = {
