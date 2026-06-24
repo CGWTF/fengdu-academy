@@ -24,6 +24,8 @@
       const box = document.getElementById('result-box');
       if (params.get('locked')) {
         box.innerHTML = '<div class="permission-denied">档案索引未开放。</div>';
+      } else if (q === '退学' || q === '退出' || q === '注销') {
+        box.innerHTML = '<p>「退学申请」功能状态：<a href="withdraw.html" class="student-name">系统维护中，点击查看</a></p>';
       } else if (!q) {
         box.innerHTML = '<p class="muted">输入人名、课程术语或档案词条开始搜索。</p>';
       } else if (type === 'blocked') {
