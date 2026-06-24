@@ -1,1 +1,31 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>记忆转移实操</title><link rel="stylesheet" href="css/reset.css"><link rel="stylesheet" href="css/common.css"></head><body data-page-id="course-06" data-required-level="0" data-is-hidden="false"><div id="app-header"></div><main class="main-content"><section class="card" id="course"></section></main><div id="app-footer"></div><script src="js/utils/storage.js"></script><script src="data/index.js"></script><script src="js/core/game-state.js"></script><script src="js/core/story-data.js"></script><script src="js/core/search-engine.js"></script><script src="js/core/account-manager.js"></script><script src="js/core/router.js"></script><script src="js/components/layout.js"></script><script>document.addEventListener('DOMContentLoaded',()=>{Layout.init('课程详情','C06');const c=StoryData.getCourse('C06');document.getElementById('course').innerHTML=`<h2>${c.title}</h2><p class="muted">任课教师：${c.instructor}</p><p>${c.description}</p><div class="record-card">维护日志片段：课程包 MEM-501 由 lu-xiaoji 最后提交。宿主替换实验手册未向学生开放。</div>`;});</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>记忆转移实操</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body data-page-id="course-06" data-required-level="0" data-is-hidden="false">
+  <div id="app-header"></div>
+  <main class="main-content">
+    <section class="card">
+      <h2>记忆转移实操</h2>
+      <p class="muted">任课教师：钟教授</p>
+      <p>意识上传与宿主替换。维护人记录里出现过 lu-xiaoji。</p>
+      <div class="record-card">维护日志片段：课程包 MEM-501 由 lu-xiaoji 最后提交。宿主替换实验手册未向学生开放。</div>
+    </section>
+  </main>
+  <div id="app-footer"></div>
+  <script src="js/utils/storage.js"></script>
+  <script src="data/index.js"></script>
+  <script src="js/core/game-state.js"></script>
+  <script src="js/core/story-data.js"></script>
+  <script src="js/core/search-engine.js"></script>
+  <script src="js/core/account-manager.js"></script>
+  <script src="js/core/router.js"></script>
+  <script src="js/components/layout.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => Layout.init('课程详情', 'C06'));</script>
+</body>
+</html>

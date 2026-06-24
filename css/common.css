@@ -720,3 +720,62 @@ body {
   border: 1px solid var(--border);
   padding: 10px;
 }
+
+.truth-stage {
+  min-height: 260px;
+}
+
+.scan-line {
+  font-family: "Courier New", monospace;
+  background: #171717;
+  color: #9cff9c;
+  padding: 18px;
+  border-radius: 4px;
+  line-height: 1.8;
+}
+
+.jumpscare-overlay {
+  position: fixed;
+  inset: 0;
+  background: #050000;
+  color: #ffeded;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 9999;
+  padding: 24px;
+}
+
+.jumpscare-overlay.show {
+  display: flex;
+  animation: alarmFlash 0.12s steps(2, end) 9;
+}
+
+.jumpscare-box {
+  max-width: 720px;
+  width: 100%;
+}
+
+.jumpscare-title {
+  font-size: clamp(2.2rem, 8vw, 5rem);
+  color: #ff2d2d;
+  font-weight: bold;
+  letter-spacing: 0;
+  margin-bottom: 18px;
+}
+
+.jumpscare-info {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid #ff2d2d;
+  padding: 18px;
+  text-align: left;
+  font-family: "Courier New", monospace;
+  line-height: 1.8;
+}
+
+@keyframes alarmFlash {
+  0% { background: #050000; }
+  50% { background: #4b0000; }
+  100% { background: #050000; }
+}

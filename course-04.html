@@ -1,1 +1,31 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>禁忌药理学</title><link rel="stylesheet" href="css/reset.css"><link rel="stylesheet" href="css/common.css"></head><body data-page-id="course-04" data-required-level="0" data-is-hidden="false"><div id="app-header"></div><main class="main-content"><section class="card" id="course"></section></main><div id="app-footer"></div><script src="js/utils/storage.js"></script><script src="data/index.js"></script><script src="js/core/game-state.js"></script><script src="js/core/story-data.js"></script><script src="js/core/search-engine.js"></script><script src="js/core/account-manager.js"></script><script src="js/core/router.js"></script><script src="js/components/layout.js"></script><script>document.addEventListener('DOMContentLoaded',()=>{Layout.init('课程详情','C04');const c=StoryData.getCourse('C04');document.getElementById('course').innerHTML=`<h2>${c.title}</h2><p class="muted">任课教师：${c.instructor}</p><p>${c.description}</p><div class="record-card">实验材料说明：活体提取流程需学生账号以上权限查看。</div>`;});</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>禁忌药理学</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body data-page-id="course-04" data-required-level="0" data-is-hidden="false">
+  <div id="app-header"></div>
+  <main class="main-content">
+    <section class="card">
+      <h2>禁忌药理学</h2>
+      <p class="muted">任课教师：吴教授</p>
+      <p>研究还魂汤、活体提取和样本稳定技术。实验材料来源字段被隐藏。</p>
+      <div class="record-card">实验材料说明：活体提取流程需学生账号以上权限查看。</div>
+    </section>
+  </main>
+  <div id="app-footer"></div>
+  <script src="js/utils/storage.js"></script>
+  <script src="data/index.js"></script>
+  <script src="js/core/game-state.js"></script>
+  <script src="js/core/story-data.js"></script>
+  <script src="js/core/search-engine.js"></script>
+  <script src="js/core/account-manager.js"></script>
+  <script src="js/core/router.js"></script>
+  <script src="js/components/layout.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => Layout.init('课程详情', 'C04'));</script>
+</body>
+</html>

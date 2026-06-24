@@ -1,32 +1,65 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>最终真相</title><link rel="stylesheet" href="../css/reset.css"><link rel="stylesheet" href="../css/common.css"></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>最终真相</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
 <body data-page-id="truth" data-required-level="5" data-is-hidden="true">
   <div id="app-header"></div>
   <main class="main-content">
-    <section class="card">
-      <h2>你已被标记</h2>
-      <p>你以为自己在调查陈雨桐。系统记录显示，你的搜索、登录路径和停留页面已经足够完成倾向判定。</p>
-      <div class="record-card" id="profile"></div>
-      <h3>搜索记录</h3>
-      <div id="truth-history"></div>
+    <section class="card truth-stage">
+      <h2>系统核验</h2>
+      <p class="muted">教师后台正在合并访问记录。请勿关闭页面。</p>
+      <div class="scan-line" id="scanText">
+        ACCESS LOG: loading...<br>
+        SEARCH TRACE: loading...<br>
+        VISITOR PROFILE: pending...
+      </div>
     </section>
   </main>
   <div id="app-footer"></div>
-  <script src="../js/utils/storage.js"></script><script src="../data/index.js"></script><script src="../js/core/game-state.js"></script><script src="../js/core/story-data.js"></script><script src="../js/core/search-engine.js"></script><script src="../js/core/account-manager.js"></script><script src="../js/core/router.js"></script><script src="../js/components/layout.js"></script>
+
+  <div class="jumpscare-overlay" id="jumpscare">
+    <div class="jumpscare-box">
+      <div class="jumpscare-title">你已被标记</div>
+      <div class="jumpscare-info" id="profile"></div>
+    </div>
+  </div>
+
+  <script src="../js/utils/storage.js"></script>
+  <script src="../data/index.js"></script>
+  <script src="../js/core/game-state.js"></script>
+  <script src="../js/core/story-data.js"></script>
+  <script src="../js/core/search-engine.js"></script>
+  <script src="../js/core/account-manager.js"></script>
+  <script src="../js/core/router.js"></script>
+  <script src="../js/components/layout.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded',()=> {
-      Layout.init('最终真相','LvX');
+    document.addEventListener('DOMContentLoaded', () => {
+      Layout.init('系统核验', 'LvX');
       const s = GameState.getState();
-      document.getElementById('profile').innerHTML = `
-        昵称：${Layout.escape(s.playerName || '未登记')}<br>
+      const history = s.searchHistory.slice(-6).map(item => item.keyword).join(' / ') || '无';
+      const profile = `
+        访问者昵称：${Layout.escape(s.playerName || '未登记')}<br>
         自设生日密码：${Layout.escape(s.playerBirthday || '未登记')}<br>
         账号路径：${s.accountsUsed.map(a => Layout.escape(a)).join(' -> ')}<br>
+        搜索倾向：${Layout.escape(history)}<br>
         浏览器：${Layout.escape(navigator.userAgent)}<br>
         屏幕：${screen.width} x ${screen.height}<br>
         语言/时区：${navigator.language} / ${Intl.DateTimeFormat().resolvedOptions().timeZone}
       `;
-      Layout.renderSearchHistory('truth-history');
+
+      const scanText = document.getElementById('scanText');
+      setTimeout(() => {
+        scanText.innerHTML = 'ACCESS LOG: matched<br>SEARCH TRACE: matched<br>VISITOR PROFILE: locked<br>MARK STATUS: pending...';
+      }, 1200);
+      setTimeout(() => {
+        document.getElementById('profile').innerHTML = profile;
+        document.getElementById('jumpscare').classList.add('show');
+      }, 3200);
     });
   </script>
 </body>

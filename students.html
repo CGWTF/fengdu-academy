@@ -15,7 +15,23 @@
       <p class="muted">名单只显示基础状态。点击姓名进入个人主页，部分字段会随权限变化。</p>
       <table class="data-table">
         <thead><tr><th>姓名</th><th>状态</th><th>最近活跃</th></tr></thead>
-        <tbody id="student-list"></tbody>
+        <tbody id="student-list">
+          <tr>
+            <td><a href="student/chen-yutong.html">陈雨桐</a></td>
+            <td><span class="status-pill">已结业</span></td>
+            <td>最后一次公开登录：7/15 23:41</td>
+          </tr>
+          <tr>
+            <td><a href="student/lin-mo.html">林墨</a></td>
+            <td><span class="status-pill">实验中</span></td>
+            <td>留言提到 04/26 的门禁更新</td>
+          </tr>
+          <tr>
+            <td><a href="student/zhou-yuan.html">周远</a></td>
+            <td><span class="status-pill">已结业</span></td>
+            <td>无联系方式</td>
+          </tr>
+        </tbody>
       </table>
     </section>
   </main>
@@ -39,7 +55,7 @@
           <td>${person.recent}</td>
         </tr>
       `).join('');
-      document.getElementById('student-list').innerHTML = rows;
+      if (rows) document.getElementById('student-list').innerHTML = rows;
     });
   </script>
 </body>

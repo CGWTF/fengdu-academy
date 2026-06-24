@@ -1,1 +1,31 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>灵体感知入门</title><link rel="stylesheet" href="css/reset.css"><link rel="stylesheet" href="css/common.css"></head><body data-page-id="course-03" data-required-level="0" data-is-hidden="false"><div id="app-header"></div><main class="main-content"><section class="card" id="course"></section></main><div id="app-footer"></div><script src="js/utils/storage.js"></script><script src="data/index.js"></script><script src="js/core/game-state.js"></script><script src="js/core/story-data.js"></script><script src="js/core/search-engine.js"></script><script src="js/core/account-manager.js"></script><script src="js/core/router.js"></script><script src="js/components/layout.js"></script><script>document.addEventListener('DOMContentLoaded',()=>{Layout.init('课程详情','C03');const c=StoryData.getCourse('C03');document.getElementById('course').innerHTML=`<h2>${c.title}</h2><p class="muted">任课教师：${c.instructor}</p><p>${c.description}</p><div class="record-card">课程通知：陆老师每年十月会暂停授课，由钟教授代课。濒死体验训练需另签确认书。</div>`;});</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>灵体感知入门</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body data-page-id="course-03" data-required-level="0" data-is-hidden="false">
+  <div id="app-header"></div>
+  <main class="main-content">
+    <section class="card">
+      <h2>灵体感知入门</h2>
+      <p class="muted">任课教师：陆晓济（代课）</p>
+      <p>濒死体验训练。课程通知提到陆老师每年十月会暂停授课。</p>
+      <div class="record-card">课程通知：陆老师每年十月会暂停授课，由钟教授代课。濒死体验训练需另签确认书。</div>
+    </section>
+  </main>
+  <div id="app-footer"></div>
+  <script src="js/utils/storage.js"></script>
+  <script src="data/index.js"></script>
+  <script src="js/core/game-state.js"></script>
+  <script src="js/core/story-data.js"></script>
+  <script src="js/core/search-engine.js"></script>
+  <script src="js/core/account-manager.js"></script>
+  <script src="js/core/router.js"></script>
+  <script src="js/components/layout.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => Layout.init('课程详情', 'C03'));</script>
+</body>
+</html>

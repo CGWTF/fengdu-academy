@@ -13,7 +13,14 @@
     <section class="card">
       <h2>课程中心</h2>
       <p class="muted">课程描述里有一些重复出现的术语。系统不会告诉你哪些词值得搜索。</p>
-      <div class="action-grid" id="course-list"></div>
+      <div class="action-grid" id="course-list">
+        <a class="action-card" href="course-01.html"><strong>C01 · 断头练习与再生</strong><br><span class="muted">钟教授</span><br><span>课程材料里反复提到一种学院专用的缝合线。</span></a>
+        <a class="action-card" href="course-02.html"><strong>C02 · 抽血复活术基础</strong><br><span class="muted">沈教授</span><br><span>公开课件删去了供体来源章节。</span></a>
+        <a class="action-card" href="course-03.html"><strong>C03 · 灵体感知入门</strong><br><span class="muted">陆晓济（代课）</span><br><span>课程通知提到陆老师每年十月会暂停授课。</span></a>
+        <a class="action-card" href="course-04.html"><strong>C04 · 禁忌药理学</strong><br><span class="muted">吴教授</span><br><span>实验材料来源字段被隐藏。</span></a>
+        <a class="action-card" href="course-05.html"><strong>C05 · 时间停滞理论</strong><br><span class="muted">赵教授</span><br><span>冷冻库条目需要助教权限查看。</span></a>
+        <a class="action-card" href="course-06.html"><strong>C06 · 记忆转移实操</strong><br><span class="muted">钟教授</span><br><span>维护记录里出现过 lu-xiaoji。</span></a>
+      </div>
     </section>
   </main>
   <div id="app-footer"></div>
@@ -28,13 +35,14 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       Layout.init('课程中心');
-      document.getElementById('course-list').innerHTML = StoryData.getCourseList().map(course => `
+      const rendered = StoryData.getCourseList().map(course => `
         <a class="action-card" href="${course.url}">
           <strong>${course.id} · ${course.title}</strong><br>
           <span class="muted">${course.instructor}</span><br>
           <span>${course.description}</span>
         </a>
       `).join('');
+      if (rendered) document.getElementById('course-list').innerHTML = rendered;
     });
   </script>
 </body>

@@ -14,12 +14,13 @@
         <div class="video-ad-timer" id="timer">10 秒后可关闭</div>
         <button class="video-ad-close" id="closeBtn" aria-label="关闭">X</button>
         <h1>酆都在线学院</h1>
-        <p style="text-indent:0;margin-top:16px;">你被推荐参加一次免费的入学资格测试。</p>
-        <p class="muted">系统正在确认观看完整度...</p>
+        <p style="text-indent:0;margin-top:16px;">你收到了一份无法关闭的入学通知。</p>
+        <p class="muted">系统正在确认访问者停留时间...</p>
       </div>
     </div>
   </main>
   <script>
+    sessionStorage.removeItem('ad_passed');
     let seconds = 10;
     const timer = document.getElementById('timer');
     const closeBtn = document.getElementById('closeBtn');
@@ -33,7 +34,7 @@
       }
     }, 1000);
     closeBtn.addEventListener('click', () => {
-      closeBtn.textContent = '确认入学';
+      closeBtn.textContent = '确认中';
       sessionStorage.setItem('ad_passed', '1');
       setTimeout(() => { window.location.href = 'home.html'; }, 500);
     });
