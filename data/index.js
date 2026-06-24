@@ -17,7 +17,7 @@ window.STORY_DATA_PAGES = {
   'course-06': { id: 'course-06', title: '记忆转移实操', url: 'Y291cnNlLTA2Lmh0bWw=', requiredLevel: 3, hidden: false },
   'student-chen-yutong': { id: 'student-chen-yutong', title: '陈雨桐档案', url: 'c3R1ZGVudC9jaGVuLXl1dG9uZy5odG1s', requiredLevel: 0, hidden: false },
   'student-lin-mo': { id: 'student-lin-mo', title: '林墨档案', url: 'c3R1ZGVudC9saW4tbW8uaHRtbA==', requiredLevel: 1, hidden: false },
-  'student-zhao-siqi': { id: 'student-zhao-siqi', title: '赵思琪档案', url: 'c3R1ZGVudC96aGFvLXNpcWkuaHRtbA==', requiredLevel: 2, hidden: false },
+  'student-zhao-siqi': { id: 'student-zhao-siqi', title: '赵思琪档案', url: 'c3R1ZGVudC96aGFvLXNpcWkuaHRtbA==', requiredLevel: 0, hidden: false },
   'student-liu-fang': { id: 'student-liu-fang', title: '刘芳档案', url: 'c3R1ZGVudC9saXUtZmFuZy5odG1s', requiredLevel: 0, hidden: false },
   'student-huang-xiaolei': { id: 'student-huang-xiaolei', title: '黄小蕾档案', url: 'c3R1ZGVudC9odWFuZy14aWFvbGVpLmh0bWw=', requiredLevel: 0, hidden: false },
   'student-jiang-chen': { id: 'student-jiang-chen', title: '江晨档案', url: 'c3R1ZGVudC9qaWFuZy1jaGVuLmh0bWw=', requiredLevel: 0, hidden: false },

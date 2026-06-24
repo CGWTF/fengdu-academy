@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>赵思琪 — 学生档案</title><link rel="stylesheet" href="../css/reset.css?v=20260625"><link rel="stylesheet" href="../css/common.css?v=20260625"></head>
-<body data-page-id="student-zhao-siqi" data-required-level="2" data-is-hidden="false">
+<body data-page-id="student-zhao-siqi" data-required-level="0" data-is-hidden="false">
 <div id="app-header"></div>
 <main class="main-content">
 <section class="card"><h2>赵思琪 — 学生档案</h2>
 <div class="record-card"><p><strong>学籍号：</strong>STU-2025-031</p><p><strong>学分：</strong>11</p><p><strong>等级：</strong>Lv3</p><p><strong>状态：</strong><span class="status-active">在读</span></p><p><strong>已选课程：</strong>灵体感知入门（陆晓济）、记忆转移实操（钟教授）</p></div>
-<div class="record-card" style="border-left-color:#e67e22;margin-top:16px;" id="lvl3-clue"><p style="text-indent:0;">入学登记信息：生日 <span class="emphasized">12月8日</span>。入学生日沿用为系统密码。</p></div>
-<div id="lvl2-hint" style="display:none;margin-top:12px;color:var(--text-light);font-size:0.85rem;">💡 赵思琪正在上陆晓济的灵体感知课。她可能知道一些关于课程安排的内幕。</div>
+<div class="record-card" style="border-left-color:#e67e22;margin-top:16px;display:none;" id="zhao-clue"><p style="text-indent:0;">入学登记信息：生日 <span class="emphasized">12月8日</span>。入学生日沿用为系统密码。</p></div>
+<div id="zhao-hint" style="display:none;margin-top:12px;color:var(--text-light);font-size:0.85rem;">💡 赵思琪正在上陆晓济的灵体感知课。她可能知道一些关于课程安排的内幕。</div>
 </section></main>
 <div id="app-footer"></div>
-<script src="../js/utils/storage.js?v=20260625"></script><script src="../data/index.js?v=20260625"></script><script src="../js/core/game-state.js?v=20260625"></script><script src="../js/core/story-data.js?v=20260625"></script><script src="../js/core/search-engine.js?v=20260625"></script><script src="../js/utils/crypto.js?v=20260625"></script><script src="../js/core/account-manager.js?v=20260625"></script><script src="../js/core/router.js?v=20260625"></script><script src="../js/components/layout.js?v=20260625"></script><script>document.addEventListener('DOMContentLoaded',()=>{Layout.init('赵思琪档案');GameState.findClue('zhao-date');if(GameState.getState().level>=2)document.getElementById('lvl2-hint').style.display='block';});</script>
+<script src="../js/utils/storage.js?v=20260625"></script><script src="../data/index.js?v=20260625"></script><script src="../js/core/game-state.js?v=20260625"></script><script src="../js/core/story-data.js?v=20260625"></script><script src="../js/core/search-engine.js?v=20260625"></script><script src="../js/utils/crypto.js?v=20260625"></script><script src="../js/core/account-manager.js?v=20260625"></script><script src="../js/core/router.js?v=20260625"></script><script src="../js/components/layout.js?v=20260625"></script><script>document.addEventListener('DOMContentLoaded',()=>{Layout.init('赵思琪档案');var lv=GameState.getState().level;if(lv>=2){document.getElementById('zhao-clue').style.display='block';document.getElementById('zhao-hint').style.display='block';GameState.findClue('zhao-date');}});</script>
 </body></html>
