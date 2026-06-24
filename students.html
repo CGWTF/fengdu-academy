@@ -18,21 +18,21 @@ document.addEventListener('DOMContentLoaded',()=>{
   GameState.findClue('chen-date');
   var s=GameState.getState(),pn=s.playerName||'新生';
   var rows=[
-    {no:'STU-2025-047',name:pn,cr:0,lv:'Lv0',st:'在读',u:'home.html'},
-    {no:'STU-2025-007',name:'陈雨桐',cr:4,lv:'Lv1',st:s.level>=1?'转运完成':'已结业',u:'student/chen-yutong.html'},
-    {no:'STU-2025-019',name:'林墨',cr:7,lv:'Lv2',st:s.level>=1?'观察中':'实验中',u:'student/lin-mo.html'},
-    {no:'STU-2025-031',name:'赵思琪',cr:11,lv:'Lv3',st:s.level>=2?'高级学员':'在读',u:'student/zhao-siqi.html'},
     {no:'STU-2025-003',name:'周远',cr:3,lv:'Lv0',st:'已结业',u:'withdraw.html'},
-    {no:'STU-2025-012',name:'吴小曼',cr:2,lv:'Lv0',st:'实验中',u:'withdraw.html'},
     {no:'STU-2025-005',name:'王建国',cr:5,lv:'Lv1',st:'已结业',u:'withdraw.html'},
-    {no:'STU-2025-022',name:'刘芳',cr:8,lv:'Lv2',st:'在读',u:'student/liu-fang.html'},
-    {no:'STU-2025-015',name:'张明',cr:6,lv:'Lv1',st:'实验中',u:'withdraw.html'},
-    {no:'STU-2025-028',name:'黄小蕾',cr:1,lv:'Lv0',st:'在读',u:'student/huang-xiaolei.html'},
-    {no:'STU-2025-009',name:'孙浩',cr:9,lv:'Lv2',st:'已结业',u:'withdraw.html'},
-    {no:'STU-2025-017',name:'钱一鸣',cr:3,lv:'Lv0',st:'实验中',u:'withdraw.html'},
+    {no:'STU-2025-007',name:'陈雨桐',cr:4,lv:'Lv1',st:s.level>=1?'转运完成':'已结业',u:'student/chen-yutong.html'},
     {no:'STU-2025-008',name:'马晓燕',cr:10,lv:'Lv3',st:'已结业',u:'withdraw.html'},
+    {no:'STU-2025-009',name:'孙浩',cr:9,lv:'Lv2',st:'已结业',u:'withdraw.html'},
+    {no:'STU-2025-012',name:'吴小曼',cr:2,lv:'Lv0',st:'实验中',u:'withdraw.html'},
+    {no:'STU-2025-015',name:'张明',cr:6,lv:'Lv1',st:'实验中',u:'withdraw.html'},
+    {no:'STU-2025-017',name:'钱一鸣',cr:3,lv:'Lv0',st:'实验中',u:'withdraw.html'},
+    {no:'STU-2025-019',name:'林墨',cr:7,lv:'Lv2',st:s.level>=1?'观察中':'实验中',u:'student/lin-mo.html'},
+    {no:'STU-2025-022',name:'刘芳',cr:8,lv:'Lv2',st:'在读',u:'student/liu-fang.html'},
+    {no:'STU-2025-028',name:'黄小蕾',cr:1,lv:'Lv0',st:'在读',u:'student/huang-xiaolei.html'},
+    {no:'STU-2025-031',name:'赵思琪',cr:11,lv:'Lv3',st:s.level>=2?'高级学员':'在读',u:'student/zhao-siqi.html'},
+    {no:'STU-2025-033',name:'许文轩',cr:2,lv:'Lv0',st:'在读',u:'student/xu-wenxuan.html'},
     {no:'STU-2025-035',name:'江晨',cr:0,lv:'Lv0',st:'在读',u:'student/jiang-chen.html'},
-    {no:'STU-2025-033',name:'许文轩',cr:2,lv:'Lv0',st:'在读',u:'student/xu-wenxuan.html'}
+    {no:'STU-2025-047',name:pn,cr:0,lv:'Lv0',st:'在读',u:'home.html'}
   ];
   var html=rows.map(function(r){
     var sc=r.st.indexOf('在读')!==-1?'status-active':r.st.indexOf('实验')!==-1?'status-experiment':'status-graduated';
