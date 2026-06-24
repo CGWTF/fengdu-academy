@@ -1035,3 +1035,18 @@ body {
   transition: box-shadow 0.2s;
 }
 .action-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+.level-tip {
+  display: inline-block;
+  width: 18px; height: 18px;
+  line-height: 18px;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: help;
+  vertical-align: middle;
+  margin-left: 2px;
+}

@@ -31,7 +31,7 @@
     <section class="card" id="dashboard-card" style="display:none;">
       <h2>学生系统</h2>
       <p class="muted">欢迎回来，<span id="dashName"></span>。</p>
-      <p class="status-line">学籍状态：<strong class="status-observation">观察期</strong></p>
+      <p class="status-line">学籍状态：<strong class="status-observation">观察期</strong> | 等级：<strong id="dashLevel">Lv0</strong> <span class="level-tip" title="Lv0: 0-3学分 | Lv1: 4-6学分 | Lv2: 7-9学分 | Lv3: 10学分以上">?</span></p>
       <div class="action-grid">
         <a class="action-card" href="courses.html"><strong>课程中心</strong><br><span class="muted">6 门课程可选</span></a>
         <a class="action-card" href="students.html"><strong>学生名单</strong><br><span class="muted">2025 级学籍总览</span></a>
@@ -63,6 +63,7 @@
         registerCard.style.display = 'none';
         dashboardCard.style.display = 'block';
         document.getElementById('dashName').textContent = state.playerName;
+        document.getElementById('dashLevel').textContent = 'Lv' + state.level;
       }
       Layout.renderSearchHistory('home-history');
     });

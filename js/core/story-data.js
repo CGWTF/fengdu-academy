@@ -8,22 +8,22 @@ const StoryData = {
   searchIndex: { entries: [] },
 
   load() {
-    this.pages = this._decodeUrls(window.STORY_DATA_PAGES || {});
-    this.courses = window.STORY_DATA_COURSES || {};
+    this.pages = this._decodeUrls(window.STORY_DATA_PAGES || {}, 'url');
+    this.courses = this._decodeUrls(window.STORY_DATA_COURSES || {}, 'url');
     this.accounts = window.STORY_DATA_ACCOUNTS || {};
-    this.people = window.STORY_DATA_PEOPLE || {};
+    this.people = this._decodeUrls(window.STORY_DATA_PEOPLE || {}, 'profilePage');
     this.clues = window.STORY_DATA_CLUES || {};
     this.searchIndex = window.STORY_DATA_SEARCH_INDEX || { entries: [] };
     this._loaded = true;
     return true;
   },
 
-  _decodeUrls(pages) {
+  _decodeUrls(obj, field) {
     const decoded = {};
-    Object.entries(pages).forEach(([key, page]) => {
-      decoded[key] = { ...page };
-      if (page.url) {
-        try { decoded[key].url = atob(page.url); } catch (e) { /* keep raw if not base64 */ }
+    Object.entries(obj).forEach(([key, val]) => {
+      decoded[key] = { ...val };
+      if (decoded[key][field]) {
+        try { decoded[key][field] = atob(decoded[key][field]); } catch (e) {}
       }
     });
     return decoded;
@@ -49,5 +49,13 @@ const StoryData = {
 
   getTotalPageCount() {
     return Object.keys(this.pages).length;
+  },
+
+  // 根据学分计算等级
+  levelFromCredits(credits) {
+    if (credits >= 10) return 3;
+    if (credits >= 7) return 2;
+    if (credits >= 4) return 1;
+    return 0;
   }
 };
