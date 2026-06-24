@@ -27,7 +27,10 @@
       } else if (!q) {
         box.innerHTML = '<p class="muted">输入人名、课程术语或档案词条开始搜索。</p>';
       } else if (type === 'blocked') {
-        box.innerHTML = `<div class="permission-denied">你搜索了“${Layout.escape(q)}”，但该档案需要 Lv${params.get('required')} 权限。</div>`;
+        const state = GameState.getState();
+        const required = params.get('required');
+        const detail = state.level >= 4 && required ? `Lv${required} 权限` : '更高权限';
+        box.innerHTML = `<div class="permission-denied">你搜索了“${Layout.escape(q)}”，但该档案需要${detail}。</div>`;
       } else if (type === 'fuzzy') {
         box.innerHTML = `<p>“${Layout.escape(q)}”存在近似记录。</p>`;
       } else if (type === 'none') {

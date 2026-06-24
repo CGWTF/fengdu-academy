@@ -12,7 +12,7 @@
   <main class="main-content">
     <section class="card login-panel">
       <h2>切换账号</h2>
-      <p class="muted">统一身份认证服务。账号与凭据需同时匹配。</p>
+      <p class="muted">账号控制台。账号 ID 与凭据需同时匹配。</p>
       <div class="form-group">
         <label for="username">账号 ID</label>
         <input id="username" autocomplete="off" placeholder="例如 chen-yutong">
@@ -55,7 +55,9 @@
         msg.className = 'modal-hint error';
         return;
       }
-      msg.textContent = `已登录 ${result.account.displayName}，权限 Lv${result.account.level}`;
+      msg.textContent = result.account.level >= 4
+        ? `已登录 ${result.account.displayName}，管理层权限 Lv${result.account.level}`
+        : `已登录 ${result.account.displayName}`;
       msg.className = 'modal-hint success';
       setTimeout(() => { window.location.href = 'home.html'; }, 700);
     });

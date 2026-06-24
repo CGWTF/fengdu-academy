@@ -24,6 +24,8 @@ const Layout = {
     const base = this.basePath();
     const state = GameState.getState();
     const account = AccountManager.getCurrentLabel();
+    const isManagement = state.level >= 4;
+    const visibleBreadcrumb = this.visibleBreadcrumb(breadcrumb, state.level);
 
     header.innerHTML = `
       <header class="site-header">
@@ -34,16 +36,22 @@ const Layout = {
           <a href="${base}courses.html">课程</a>
           <a href="${base}students.html">学生</a>
           <a href="${base}search.html">搜索记录</a>
-          <a href="${base}login.html">账号</a>
-          <a href="${base}admin.html">后台</a>
-          <span class="account-chip">${this.escape(account)} · Lv${state.level}</span>
+          <details class="cg-menu">
+            <summary>CG</summary>
+            <div class="cg-menu-panel">
+              <span class="cg-account">${this.escape(account)}</span>
+              ${isManagement ? `<span class="cg-level">管理层 · Lv${state.level}</span>` : ''}
+              <a href="${base}login.html">账号切换</a>
+              ${isManagement ? `<a href="${base}admin.html">管理后台</a>` : ''}
+            </div>
+          </details>
         </nav>
       </header>
       <form class="search-bar" id="global-search-form">
         <input type="text" id="search-input" placeholder="档案检索" maxlength="24" autocomplete="off">
         <button type="submit">检索</button>
       </form>
-      ${pageTitle ? `<div class="page-title-bar"><span class="page-title">${this.escape(pageTitle)}</span>${breadcrumb ? `<span class="page-breadcrumb">${this.escape(breadcrumb)}</span>` : ''}</div>` : ''}
+      ${pageTitle ? `<div class="page-title-bar"><span class="page-title">${this.escape(pageTitle)}</span>${visibleBreadcrumb ? `<span class="page-breadcrumb">${this.escape(visibleBreadcrumb)}</span>` : ''}</div>` : ''}
     `;
 
     const form = document.getElementById('global-search-form');
@@ -123,7 +131,9 @@ const Layout = {
   renderSearchHistory(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
-    const history = GameState.getState().searchHistory.slice(-12).reverse();
+    const state = GameState.getState();
+    const history = state.searchHistory.slice(-12).reverse();
+    const isManagement = state.level >= 4;
     if (!history.length) {
       container.innerHTML = '<p class="muted">暂无搜索记录。</p>';
       return;
@@ -131,9 +141,16 @@ const Layout = {
     container.innerHTML = history.map(item => `
       <div class="history-item">
         <span>${this.escape(item.keyword)}</span>
-        <small>${this.labelResult(item.resultType)}${item.requiredLevel ? ` · Lv${item.requiredLevel}` : ''}</small>
+        <small>${this.labelResult(item.resultType)}${isManagement && item.requiredLevel ? ` · Lv${item.requiredLevel}` : ''}</small>
       </div>
     `).join('');
+  },
+
+  visibleBreadcrumb(breadcrumb, level) {
+    if (!breadcrumb) return '';
+    const text = String(breadcrumb);
+    if (level < 4 && /^Lv/i.test(text.trim())) return '';
+    return text;
   },
 
   labelResult(type) {

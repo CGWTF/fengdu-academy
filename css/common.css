@@ -1,4 +1,4 @@
-/* 共享样式 — 餐厅网站主题 */
+/* 共享样式 */
 
 :root {
   --bg: #f5f0e8;
@@ -53,14 +53,18 @@ body {
 /* 导航栏 */
 .site-nav {
   display: flex;
-  justify-content: center;
-  gap: 24px;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
   padding: 10px 0;
-  margin-top: 6px;
+  margin: 6px auto 0;
+  max-width: var(--max-width);
   border-top: 1px solid rgba(255,255,255,0.15);
 }
 
-.site-nav a {
+.site-nav a,
+.cg-menu summary {
   color: var(--header-text);
   font-size: 0.9rem;
   padding: 4px 12px;
@@ -69,8 +73,67 @@ body {
   cursor: pointer;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.cg-menu summary:hover {
   background: rgba(255,255,255,0.1);
+}
+
+.cg-menu {
+  position: relative;
+  margin-left: auto;
+}
+
+.cg-menu summary {
+  list-style: none;
+  border: 1px solid rgba(255,255,255,0.24);
+  min-width: 46px;
+  text-align: center;
+}
+
+.cg-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.cg-menu-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 150;
+  display: grid;
+  gap: 8px;
+  min-width: 150px;
+  padding: 10px;
+  background: #fdfcf9;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.cg-menu-panel a {
+  color: var(--text);
+  padding: 6px 8px;
+}
+
+.cg-menu-panel a:hover {
+  background: #eee5d8;
+}
+
+.cg-account,
+.cg-level {
+  display: block;
+  font-size: 0.84rem;
+  padding: 0 8px;
+}
+
+.cg-account {
+  color: var(--text-light);
+}
+
+.cg-level {
+  color: var(--accent);
+  font-weight: bold;
 }
 
 /* 搜索栏 */
@@ -688,6 +751,15 @@ body {
   text-indent: 0;
 }
 
+.status-line {
+  text-indent: 0;
+}
+
+.status-observation {
+  color: var(--success);
+  font-weight: bold;
+}
+
 .action-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -706,6 +778,28 @@ body {
 .action-card:hover {
   border-color: var(--accent);
   transform: translateY(-1px);
+}
+
+.course-page h3 {
+  margin-top: 20px;
+}
+
+.course-page strong,
+.action-card span strong {
+  font-weight: bold;
+}
+
+.courseware-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.courseware-item {
+  background: #fdfcf9;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
 }
 
 .status-pill {

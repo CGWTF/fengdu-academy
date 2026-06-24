@@ -33,7 +33,7 @@ window.STORY_DATA_COURSES = {
     url: 'course-01.html',
     title: '断头练习与再生',
     instructor: '钟教授',
-    description: '基础断头技术与再生缝合。课程材料里反复提到一种学院专用的缝合线。',
+    description: '再生缝合实训，器材清单含学院专用<strong>缝合线</strong>。历史文献条目标记为<strong>不死术</strong>。',
     keywords: ['缝合线', '不死术']
   },
   C02: {
@@ -42,7 +42,7 @@ window.STORY_DATA_COURSES = {
     url: 'course-02.html',
     title: '抽血复活术基础',
     instructor: '沈教授',
-    description: '讲授血型匹配、供体筛选与复活回注流程。公开课件删去了供体来源章节。',
+    description: '<strong>血型匹配</strong>与复活回注流程，<strong>供体筛选</strong>章节暂不公开。',
     keywords: ['血型匹配', '供体筛选']
   },
   C03: {
@@ -51,7 +51,7 @@ window.STORY_DATA_COURSES = {
     url: 'course-03.html',
     title: '灵体感知入门',
     instructor: '陆晓济（代课）',
-    description: '濒死体验训练。课程通知提到陆老师每年十月会暂停授课。',
+    description: '<strong>濒死体验</strong>训练需提交确认书。代课记录登记在<strong>陆晓济</strong>名下。',
     keywords: ['濒死体验']
   },
   C04: {
@@ -60,7 +60,7 @@ window.STORY_DATA_COURSES = {
     url: 'course-04.html',
     title: '禁忌药理学',
     instructor: '吴教授',
-    description: '研究还魂汤、活体提取和样本稳定技术。实验材料来源字段被隐藏。',
+    description: '还魂汤配伍与样本稳定实验，材料登记含<strong>活体提取</strong>字段。',
     keywords: ['活体提取']
   },
   C05: {
@@ -69,7 +69,7 @@ window.STORY_DATA_COURSES = {
     url: 'course-05.html',
     title: '时间停滞理论',
     instructor: '赵教授',
-    description: '生命暂停与冷冻库维护。部分冷冻库条目需要助教权限查看。',
+    description: '生命暂停理论、封存编号与<strong>冷冻库</strong>维护巡检。',
     keywords: ['冷冻库']
   },
   C06: {
@@ -78,7 +78,7 @@ window.STORY_DATA_COURSES = {
     url: 'course-06.html',
     title: '记忆转移实操',
     instructor: '钟教授',
-    description: '意识上传与宿主替换。维护签名：lu-xiaoji。',
+    description: '意识上传、<strong>宿主替换</strong>与维护签名：<strong>陆晓济</strong>。',
     keywords: ['宿主替换', '陆晓济']
   }
 };
@@ -166,7 +166,8 @@ window.STORY_DATA_SEARCH_INDEX = {
     { keyword: '退学', aliases: ['退出', '注销'], targetPageId: 'search', requiredLevel: 0, unlockMode: 'fuzzy' },
     { keyword: '陈雨桐', aliases: ['陈雨', 'yutong', 'chen-yutong'], targetPageId: 'student-chen-yutong', requiredLevel: 0, unlockMode: 'fuzzy' },
     { keyword: '林墨', aliases: ['lin-mo', '助教'], targetPageId: 'student-lin-mo', requiredLevel: 1, unlockMode: 'fuzzy' },
-    { keyword: '缝合线', aliases: ['血型匹配'], targetPageId: 'orientation', requiredLevel: 0, unlockMode: 'exact' },
+    { keyword: '缝合线', aliases: ['再生缝合'], targetPageId: 'orientation', requiredLevel: 0, unlockMode: 'exact' },
+    { keyword: '血型匹配', aliases: ['匹配矩阵'], targetPageId: 'orientation', requiredLevel: 0, unlockMode: 'exact' },
     { keyword: '不死术', aliases: [], targetPageId: 'exp-001', requiredLevel: 1, unlockMode: 'exact' },
     { keyword: '供体筛选', aliases: ['供体'], targetPageId: 'archive', requiredLevel: 1, unlockMode: 'exact' },
     { keyword: '濒死体验', aliases: ['濒死'], targetPageId: 'exp-002', requiredLevel: 1, unlockMode: 'exact' },
