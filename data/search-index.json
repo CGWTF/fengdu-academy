@@ -1,8 +1,0 @@
-{
-  "entries": [
-    { "keyword": "退学", "aliases": ["退出", "注销"], "targetPageId": "search", "requiredLevel": 0, "unlockMode": "fuzzy" },
-    { "keyword": "陈雨桐", "aliases": ["陈雨", "yutong", "chen-yutong"], "targetPageId": "student-chen-yutong", "requiredLevel": 0, "unlockMode": "fuzzy" },
-    { "keyword": "供体筛选", "aliases": ["供体"], "targetPageId": "archive", "requiredLevel": 1, "unlockMode": "exact" },
-    { "keyword": "宿主替换", "aliases": ["宿主"], "targetPageId": "truth", "requiredLevel": 5, "unlockMode": "exact" }
-  ]
-}

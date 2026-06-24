@@ -24,7 +24,7 @@ const Layout = {
     const base = this.basePath();
     const state = GameState.getState();
     const account = AccountManager.getCurrentLabel();
-    const isManagement = state.level >= 4;
+    const isManagement = state.level >= 5;
     const visibleBreadcrumb = this.visibleBreadcrumb(breadcrumb, state.level);
 
     header.innerHTML = `
@@ -133,7 +133,7 @@ const Layout = {
     if (!container) return;
     const state = GameState.getState();
     const history = state.searchHistory.slice(-12).reverse();
-    const isManagement = state.level >= 4;
+    const isManagement = state.level >= 5;
     if (!history.length) {
       container.innerHTML = '<p class="muted">暂无搜索记录。</p>';
       return;

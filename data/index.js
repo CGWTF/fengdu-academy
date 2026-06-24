@@ -177,6 +177,7 @@ window.STORY_DATA_SEARCH_INDEX = {
     { keyword: '活体提取', aliases: ['活体'], targetPageId: 'supply', requiredLevel: 1, unlockMode: 'exact' },
     { keyword: '冷冻库', aliases: ['冷冻'], targetPageId: 'map', requiredLevel: 2, unlockMode: 'exact' },
     { keyword: '陆晓济', aliases: ['陆老师', 'lu-xiaoji'], targetPageId: 'teacher-lu-xiaoji', requiredLevel: 2, unlockMode: 'fuzzy' },
+    { keyword: '停课通知', aliases: ['十月停课', '公告'], targetPageId: 'notice', requiredLevel: 2, unlockMode: 'fuzzy' },
     { keyword: '宿主替换', aliases: ['宿主'], targetPageId: 'truth', requiredLevel: 5, unlockMode: 'exact' }
   ]
 };

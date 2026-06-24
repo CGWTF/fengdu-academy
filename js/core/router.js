@@ -13,7 +13,7 @@ const Router = {
     if (exempt.includes(this.pageId)) return true;
 
     const state = GameState.getState();
-    const base = Layout ? Layout.basePath() : this._basePath();
+    const base = Layout.basePath();
 
     if (this.isHidden && !GameState.hasFoundPage(this.pageId)) {
       window.location.href = base + 'search.html?locked=1';
@@ -28,10 +28,4 @@ const Router = {
     GameState.foundPage(this.pageId);
     return true;
   },
-
-  _basePath() {
-    const path = window.location.pathname;
-    if (path.includes('/hidden/') || path.includes('/student/') || path.includes('/teacher/')) return '../';
-    return '';
-  }
 };

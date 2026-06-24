@@ -53,6 +53,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       Layout.init('学生名单');
+      GameState.findClue('tong-birthday');
       const state = GameState.getState();
       const rows = StoryData.getPeopleByType('student').map(person => `
         <tr>
